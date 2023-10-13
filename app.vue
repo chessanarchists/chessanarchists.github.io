@@ -1,9 +1,9 @@
 <template>
-	<div class="h-screen">
+	<div class="h-screen overflow-x-hidden bg-slate-800 text-text">
+		<title>AnarchyChess</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link href="https://fonts.cdnfonts.com/css/youtube-sans" rel="stylesheet" />
 
-    <!-- Loading Spinner -->
 		<div v-if="loading" class="fixed inset-0 flex items-center justify-center">
 			<div class="animate-spin">
 				<img src="~/assets/images/martin.png" width="200"/>
@@ -49,8 +49,8 @@
 	}
 
 	.spinning-image {
-		width: 200px; /* Adjust to the size you want */
-		height: 200px; /* Adjust to the size you want */
+		width: 200px;
+		height: 200px;
 	}
 
 	@keyframes spin {

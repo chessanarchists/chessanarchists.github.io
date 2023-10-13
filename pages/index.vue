@@ -1,6 +1,6 @@
 <template>
 	<transition>
-		<div class="h-screen w-screen bg-slate-800 text-text">
+		<div class="h-screen w-screen">
 			<Reddit/>
 		</div>
 	</transition>
