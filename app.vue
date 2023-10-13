@@ -11,7 +11,7 @@
 		</div>
 
 		<NuxtLayout>
-			<NuxtPage />
+			<NuxtPage class="h-screen"/>
 		</NuxtLayout>
 	</div>
 </template>

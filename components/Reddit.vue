@@ -1,6 +1,9 @@
 <template>
 	<div class="text-center align-middle">
-		<p class="text-2xl py-3">Hot posts from the subreddit</p>
+		<div class="py-3">
+			<p class="text-2xl">Hot posts from the subreddit</p>
+			<a href="https://reddit.com/r/anarchychess" class="underline text-blue-200">Go to r/anarchychess <faIcon :icon="['fab', 'reddit']" class="text-xl"/></a>
+		</div>
 		<div class="flex flex-wrap justify-center space-x-[2%] bg-secondary p-3">
 			<div v-for="post in redditPosts" :key="post.id" class="w-screen my-2 sm:w-[30%] rounded bg-accent">
 				<a :href="`https://reddit.com${post.permalink}`">

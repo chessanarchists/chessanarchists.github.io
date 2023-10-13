@@ -14,7 +14,7 @@
 					@dragover.prevent="dragOver(i)"
 					@dragend="dragEnd(i)"
 					@drop="drop(i)">
-					<font-awesome-icon v-if="piece" :icon="icon(piece)" :class="piece.color" class="text-4xl" />
+					<faIcon v-if="piece" :icon="icon(piece)" :class="piece.color" class="text-4xl" />
 				</div>
 			</div>
 		</div>
