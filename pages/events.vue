@@ -1,0 +1,6 @@
+<template>
+    <div class="h-screen text-black">
+        <p class="text-3xl">Events page</p>
+        <nuxt-link to="/"  class="text-blue-500">go back</nuxt-link>
+    </div>
+</template>
