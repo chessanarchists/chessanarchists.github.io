@@ -1,16 +1,20 @@
 <template>
 	<div>
 		<div id="chessboard" v-if="pieces">
-			<div class="square" v-for="(piece, i) in position" :class="{ 'bg-green-700': row(i), 'bg-red-400': !row(i) }">
+			<div
+				class="square"
+				v-for="(piece, i) in position"
+				@click="handleClick(i, $event)"
+				:class="{ 'text-yellow-300': activePiece == i, 'bg-green-700': row(i), 'bg-red-400': !row(i) }">
 				<div
 					:key="i"
 					class="piece flex items-center justify-center h-full"
 					:draggable="!!piece"
 					@dragstart="dragStart(i, $event)"
-					@dragover.prevent ="dragOver(i)"
+					@dragover.prevent="dragOver(i)"
 					@dragend="dragEnd(i)"
 					@drop="drop(i)">
-					<font-awesome-icon v-if="piece" :icon="icon(piece)" :class="piece.color" class="text-4xl"/>
+					<font-awesome-icon v-if="piece" :icon="icon(piece)" :class="piece.color" class="text-4xl" />
 				</div>
 			</div>
 		</div>
@@ -20,8 +24,8 @@
 
 <script setup>
 	const { pieces } = usePieces();
-	const { EnPassent } = usePuzzles()
-	let status = ref("")
+	const { EnPassent } = usePuzzles();
+	let status = ref("");
 
 	const position = ref([
 		pieces.RookB,
@@ -90,7 +94,7 @@
 		pieces.RookW,
 	]);
 
-	position.value = EnPassent.position	
+	position.value = EnPassent.position;
 
 	const icon = (piece) => {
 		return ["far", piece.name];
@@ -104,13 +108,13 @@
 
 	const draggedPiece = ref(null);
 
-	const from = ref(null)
+	const from = ref(null);
 
 	function dragStart(index, $event) {
 		if (position.value[index]) {
-			from.value = index
+			activePiece.value = index
+			from.value = index;
 			draggedPiece.value = position.value[index];
-			position.value[index] = "";
 		}
 	}
 
@@ -120,23 +124,25 @@
 	}
 
 	function dragEnd(index) {
-		draggedPiece.value = null;
+		draggedPiece.value = "";
 	}
 
 	function drop(index) {
-		if (
-			!(from.value == 30 &&
-			index == 21)
-		) {
-			status.value = "Wrong Move"
-			position.value[from.value] = draggedPiece.value
-			return
-		}
-		if (draggedPiece.value && !position.value[index]) {
+		if (!(from.value == 30 && index == 21)) {
+			status.value = "Wrong Move";
+			position.value[from.value] = draggedPiece.value;
+		} else if (draggedPiece.value && !position.value[index]) {
 			position.value[index] = draggedPiece.value;
-			draggedPiece.value = null;
-			status.value = "holy hell, congrats!!"
+			position.value[from.value] = "";
+			status.value = "holy hell, congrats!!";
 		}
+	}
+
+	const activePiece = ref(null);
+
+	function handleClick(i, $event) {
+		if (position.value[i] == "") return
+		activePiece.value = i;
 	}
 </script>
 
