@@ -2,27 +2,27 @@ export function usePieces() {
 	const pieces = {
 		PawnW: {
 			name: "chess-pawn",
-			color: "text--white",
+			color: "text-white",
 		},
 		RookW: {
 			name: "chess-rook",
-			color: "text--white",
+			color: "text-white",
 		},
 		KnightW: {
 			name: "chess-knight",
-			color: "text--white",
+			color: "text-white",
 		},
 		BishopW: {
 			name: "chess-bishop",
-			color: "text--white",
+			color: "text-white",
 		},
 		KingW: {
 			name: "chess-king",
-			color: "text--white",
+			color: "text-white",
 		},
 		QueenW: {
 			name: "chess-queen",
-			color: "text--white",
+			color: "text-white",
 		},
 
 		PawnB: {

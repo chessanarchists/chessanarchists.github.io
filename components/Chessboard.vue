@@ -1,11 +1,11 @@
 <template>
-	<div>
-		<div id="chessboard" v-if="pieces">
+	<div class="flex flex-col justify-center items-center">
+		<div id="chessboard" v-if="pieces" class="">
 			<div
 				class="square"
 				v-for="(piece, i) in position"
 				@click="handleClick(i, $event)"
-				:class="{ 'text-yellow-300': activePiece == i, 'bg-green-700': row(i), 'bg-red-400': !row(i) }">
+				:class="{ 'bg-secondary': row(i), 'bg-accent': !row(i) }">
 				<div
 					:key="i"
 					class="piece flex items-center justify-center h-full"
@@ -14,7 +14,7 @@
 					@dragover.prevent="dragOver(i)"
 					@dragend="dragEnd(i)"
 					@drop="drop(i)">
-					<faIcon v-if="piece" :icon="icon(piece)" :class="piece.color" class="text-4xl" />
+					<faIcon v-if="piece" :icon="icon(piece)" :class="piece.color, { '!text-yellow-200': activePiece == i }" class="text-4xl" />
 				</div>
 			</div>
 		</div>
@@ -141,7 +141,7 @@
 	const activePiece = ref(null);
 
 	function handleClick(i, $event) {
-		if (position.value[i] == "") return
+		//if (position.value[i] == "") return
 		activePiece.value = i;
 	}
 </script>

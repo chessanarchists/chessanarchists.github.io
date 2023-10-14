@@ -1,7 +1,8 @@
 <template>
     <transition>
         <div>
-            <nuxt-link to="/" class="">go back</nuxt-link>
+            <p class="text-3xl">Puzzles</p>
+            <nuxt-link to="/"  class="text-blue-500">go back</nuxt-link>
             <Chessboard/>
         </div>
     </transition>

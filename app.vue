@@ -1,5 +1,5 @@
 <template>
-	<div class="h-screen overflow-x-hidden bg-slate-800 text-text">
+	<div class="h-screen overflow-x-hidden bg-background">
 		<title>AnarchyChess</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link href="https://fonts.cdnfonts.com/css/youtube-sans" rel="stylesheet" />
@@ -11,7 +11,7 @@
 		</div>
 
 		<NuxtLayout>
-			<NuxtPage class="h-screen"/>
+			<NuxtPage/>
 		</NuxtLayout>
 	</div>
 </template>
