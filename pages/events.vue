@@ -1,7 +1,7 @@
 <template>
     <div class="">
         <main>
-            <ContentDoc path="/events"/>
+            <ContentDoc/>
         </main>
     </div>
 </template>
