@@ -11,7 +11,7 @@
         
 		<slot></slot>
 
-		<footer class="bg-secondary">This is the Footer</footer>
+		<footer class="bg-secondary">Footer goes here</footer>
 	</div>
 </template>
 
