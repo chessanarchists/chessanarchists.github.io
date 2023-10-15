@@ -1,5 +1,4 @@
 <template>
-    <title>Puzzles</title>
     <transition>
         <div>
             <p class="text-3xl">Puzzles</p>
