@@ -4,9 +4,10 @@
 			<nav class="bg-primary text-white w-screen flex items-center space-x-[1em] py-2">
 				<nuxt-link to="/"><img src="~/assets/images/horsey.png" width="50" class="ms-5 rounded" /></nuxt-link>
 				<div class="flex space-x-5" v-for="(page, index) in pages" :key="index">
-					<nuxt-link :to="page.url" class="p-1 bg-[#ED1824] rounded-lg">{{
-						page.title
-					}}</nuxt-link>
+					<nuxt-link :to="page.url" class="p-1 bg-[#ED1824] rounded-lg
+					hover:bg-indigo-900 hover:animate-bounce">
+						{{ page.title }}
+					</nuxt-link>
 				</div>
 			</nav>
 			

@@ -1,3 +1,28 @@
-main :deep(h1) {
-    font-size: xx-large;
+main {
+	margin-left: 1em;
 }
+:deep(h1) {
+	font-size: xx-large;
+}
+:deep(h2) {
+	font-size: x-large;
+}
+:deep(h3) {
+	font-size: large;
+}
+
+:deep(table) {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+:deep(th) {
+	background-color: #e8000040;
+}
+
+:deep(th), :deep(td) {
+	border: 1px solid black;
+	padding: 5px;
+	text-align: center;
+}
+
