@@ -1,5 +1,4 @@
 <template>
-    <title>Our Team</title>
     <div class="">
         <p class="text-3xl">About page</p>
         <nuxt-link to="/"  class="text-blue-500">go back</nuxt-link>
