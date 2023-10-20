@@ -1,3 +1,32 @@
+import Vue from 'vue'
+import router from 'vue-router'
+import about from './views/about.vue'
+
+vue.use(router)
+
+export default new router({
+    mode: 'history',
+    base: process.env.Base_URL,
+    routes: [
+        {
+            path: '/',
+            name: 'about',
+            component: About
+        }
+    ]
+})
+
+
+
+
+
+
+
+
+
+
+
+
 <template>
     <div class="">
         <p class="text-3xl">About page</p>
