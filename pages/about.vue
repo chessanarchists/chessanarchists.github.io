@@ -34,16 +34,13 @@
 		<div class="about-info">
 			<div class="about-img">
 				<img src=
-"https://media.geeksforgeeks.org/wp-content/uploads/20230824153359/
-371ba38b-8a03-4bff-916c-c3fa5396ceda.jfif" alt="Geeksforgeeks">
+"https://www.reddit.com/r/AnarchyChess/>
 			</div>
 			<div>
-	<p>GeeksforGeeks is a leading platform that provides computer science resources
-				and coding challenges for programmers and technology enthusiasts,
-				along with interview and exam preparations for upcoming aspirants.
-				With a strong emphasis on enhancing coding skills and knowledge,
-				it has become a trusted destination for over 12 million plus registered
-				users worldwide.</p>
+	<p>Anarchy Chess is a leading organization that provides opportunities for chess players and 
+				Memesters alike to share their love of chess through memes.
+				By sharing chess in a lighthearted way, it allows for people that wouldn't 
+				otherwise be exposed to the game to share in it's glory. With memes, all is possible.</p>
 				<button>Read More...</button>
 			</div>
 		</div>
