@@ -1,6 +1,8 @@
 # History page
 
 *cool history content goes here*
+
+
 **(As Narrated by Optimus Prime)**
 
   In the beginning there were two pawns, one black, one white. They would move often, always one step at a time, but never capturing. This all changed when the white pawn moved two steps, the black pawn killed the white pawn, creating the first en passant. The sheer energy created from en passant vaporized the two pawns instantly and the superheated matter spread out through the universe in what we call, The Beginning Passant. The Beginning Passant is named that because of the three types of en passant. The first and most normal type of en passant is the normal en passant, this chemical reaction when one pawn moves 2 spaces past another pawn creates a strange substance called Googlium. This substance causes mass hysteria and is generally advised not to be used. People exposed to Googlium tend to Shout "HOLY HELL" before convulsing in a fit of giggles. The second type of en passant is the Beginning Passant, this 'passant marked the beginning of chess and the universe as we know it. The third and final 'passant is the End Passant, this is the final passant, the one that marks the collapse of the universe and all that we know. It is said in the ancient scriptures of Sir John Chess, "Thay beginingith of the End Passant shall be put into motion when the board is ignites and the bishop goes on vacation."
