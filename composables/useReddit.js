@@ -3,7 +3,7 @@ const redditPosts = ref([]);
 export function useReddit() {
 	async function getPosts() {
 		try {
-			const response = await fetch("https://www.reddit.com/r/anarchychess/top.json?limit=10&t=day");
+			const response = await fetch("https://www.reddit.com/r/anarchychess/top.json?limit=6&t=day");
 			const data = await response.json();
 			redditPosts.value = data.data.children.map((post) => post.data);
 		} catch (error) {
