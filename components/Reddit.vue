@@ -26,7 +26,7 @@ from the /composables/useReddit.js file. It provides us with the reddit posts an
 	const { redditPosts } = useReddit();
 
 	function isImagePost(post) {
-		return post.url.endsWith(".jpg") || post.url.endsWith(".png") || (post.preview && post.preview.images[0].source.url);
+		return post.url.endsWith(".jpg") || post.url.endsWith(".png" );
 	}
 
 	function getImageUrl(post) {
