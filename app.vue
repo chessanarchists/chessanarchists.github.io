@@ -1,3 +1,8 @@
+<!-- This is the main entry point of the app
+Here we have the important meta info about the page, so that search engines like google (en passant) can understand the website. 
+There is also the loading spinner, it's styling and the page font. 
+The NuxtPage is where the actual page is inserted, depending on that url the user is on, from the pages directory -->
+
 <template>
 	<div class="h-screen overflow-x-hidden bg-background">
 		<title>AnarchyChess</title>

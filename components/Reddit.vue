@@ -1,3 +1,5 @@
+<!-- This component shows the top 3 reddit posts from the subreddit. We use a composable (reusable piece of code)
+from the /composables/useReddit.js file. It provides us with the reddit posts and then we use that data to display them here. -->
 <template>
 	<div class="text-center align-middle">
 		<div class="py-3">
@@ -20,6 +22,7 @@
 </template>
 
 <script setup>
+	/* This effectively says "grab the redditPosts from the useReddit.js file" */
 	const { redditPosts } = useReddit();
 
 	function isImagePost(post) {

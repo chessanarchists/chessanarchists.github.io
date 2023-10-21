@@ -1,3 +1,5 @@
+<!-- This code handles the chessboard and the logic for puzzles -->
+
 <template>
 	<div class="flex flex-col justify-center items-center">
 		<div id="chessboard" v-if="pieces" class="">
@@ -141,7 +143,6 @@
 	const activePiece = ref(null);
 
 	function handleClick(i, $event) {
-		//if (position.value[i] == "") return
 		activePiece.value = i;
 	}
 </script>

@@ -1,75 +1,13 @@
-# Nuxt 3 Minimal Starter
+# The Official AnarchyChess Website
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+# How it works
+The pages or "routes" that the website has, correspond to the .vue files in the 'pages' folder.
+So the puzzles.vue file is what the user sees when they go to chessanarchists.org/puzzles
 
-## Setup
+Every .vue file has three slots:
+a \<template>\</template>, that contains the html that the user sees. Here we put content and images.
 
-Make sure to install the dependencies:
+the \<script setup>\</script> contains the code behind the webpage. Variables here can be used in the html, for example to display an element only when a condition is met. They are also reactive, so when the variable changes, the html shows that change immediately, without having to write long imperative expressions like:
+```document.getElementById('text-container').innerHTML = 'my new text content'```
 
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+the \<style scoped>\</style> tag contains the styles for the html, that can be applied to elements depending on their tag name, id or class.
