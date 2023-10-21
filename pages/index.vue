@@ -5,10 +5,10 @@
 <template>
 	<transition>
 		<div>
-			<Reddit />
 			<main>
 				<ContentDoc />
 			</main>
+			<Reddit />
 		</div>
 	</transition>
 </template>
