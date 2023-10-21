@@ -5,9 +5,14 @@
 <template>
 	<transition>
 		<div>
-			<Reddit/>
+			<Reddit />
+			<main>
+				<ContentDoc />
+			</main>
 		</div>
 	</transition>
 </template>
 
-
+<style scoped>
+	@import "~/assets/css/content.css";
+</style>
