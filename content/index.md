@@ -1,20 +1,15 @@
-# AnarchyChess
+# News from AnarchyChess
 
-*cool main/events/info content goes here*
-
-**R/Chess vs R/AnarchyChess Christmas Tournament**
+### **r/Chess vs r/AnarchyChess christmas tournament** <br>
 
 *Date coming soon*
 
 **Winner - (TBD)**
 
+<br>
 
+### **AnarchyChess 960**
 
-
-
-**Anarchy Chess 960**
-
-*Date Coming soon*
+*Date coming soon*
 
 **Winner - (TBD)**
-
