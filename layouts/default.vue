@@ -41,9 +41,9 @@ to be displayed on every page -->
 			title: "History",
 			url: "/history",
 		},
-		{
-			title: "Events",
-			url: "/events",
-		},
+		/* {
+			title: "Merch",
+			url: "/merch",
+		}, */
 	];
 </script>
