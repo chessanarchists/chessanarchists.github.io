@@ -22,7 +22,7 @@ to be displayed on every page -->
 
 		<!-- the footer -->
 		<footer class="bg-primary text-white p-2 text-center">Brought to you by the 
-			<nuxt-link to="/about" class="text-accent underline">r/anarchychess modteam</nuxt-link>
+			<nuxt-link to="/about" class="text-accent underline">r/anarchychess team</nuxt-link>
 		</footer>
 	</div>
 </template>
