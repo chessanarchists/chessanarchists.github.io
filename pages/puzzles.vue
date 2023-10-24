@@ -2,9 +2,14 @@
 <template>
 	<transition>
 		<div>
-			<p class="text-3xl">Puzzles</p>
-			<nuxt-link to="/" class="text-blue-500">go back</nuxt-link>
+			<main>
+				<ContentDoc />
+			</main>
 			<Chessboard />
 		</div>
 	</transition>
 </template>
+
+<style scoped>
+	@import "~/assets/css/content.css";
+</style>
