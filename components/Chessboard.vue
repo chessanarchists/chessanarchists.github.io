@@ -32,7 +32,6 @@
 	let status = ref("");
 	let FEN = ref("");
 	function build(fen) {
-		console.log(convert(fen));
 		position.value = convert(fen)
 	}
 
