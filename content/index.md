@@ -1,5 +1,9 @@
 # Welcome to AnarchyChess
 
+### Current and upcoming events:
+
+<br>
+
 ### **r/Chess vs r/AnarchyChess christmas tournament** <br>
 
 *Date coming soon*

@@ -2,7 +2,7 @@ main {
 	margin-left: 1em;
 }
 :deep(h1) {
-	font-size: xx-large;
+	font-size: 1.9em;
 }
 :deep(h2) {
 	font-size: x-large;
