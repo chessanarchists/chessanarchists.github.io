@@ -2,12 +2,8 @@
 
 <template>
 	<div class="flex flex-col justify-center items-center">
-		<div id="chessboard" v-if="pieces" class="">
-			<div
-				class="square"
-				v-for="(piece, i) in position"
-				@click="handleClick(i, $event)"
-				:class="{ 'bg-secondary': row(i), 'bg-accent': !row(i) }">
+		<div id="chessboard" v-if="pieces.PawnW" class="">
+			<div class="square" v-for="(piece, i) in position" @click="handleClick(i, $event)" :class="{ 'bg-secondary': row(i), 'bg-accent': !row(i) }">
 				<div
 					:key="i"
 					class="piece flex items-center justify-center h-full"
@@ -16,18 +12,29 @@
 					@dragover.prevent="dragOver(i)"
 					@dragend="dragEnd(i)"
 					@drop="drop(i)">
-					<faIcon v-if="piece" :icon="icon(piece)" :class="piece.color, { '!text-yellow-200': activePiece == i }" class="text-4xl" />
+					<client-only>
+						<faIcon v-if="piece" :icon="icon(piece)" :class="[piece.color, { 'text-yellow-200': activePiece == i }]" class="text-4xl" />
+					</client-only>
 				</div>
 			</div>
 		</div>
 		<p class="">{{ status }}</p>
+		<input v-model="FEN" type="text" />
+		<button @click="build(FEN)">Build</button>
 	</div>
 </template>
 
 <script setup>
 	const { pieces } = usePieces();
 	const { EnPassent } = usePuzzles();
+	const { convert } = useFEN();
+
 	let status = ref("");
+	let FEN = ref("");
+	function build(fen) {
+		console.log(convert(fen));
+		position.value = convert(fen)
+	}
 
 	const position = ref([
 		pieces.RookB,
@@ -114,7 +121,7 @@
 
 	function dragStart(index, $event) {
 		if (position.value[index]) {
-			activePiece.value = index
+			activePiece.value = index;
 			from.value = index;
 			draggedPiece.value = position.value[index];
 		}
