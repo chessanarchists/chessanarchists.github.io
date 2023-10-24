@@ -1,7 +1,6 @@
 <template>
-    <!-- Clicker html goes here -->
     <div>
-
+        Clicker html goes here
     </div>
 </template>
 
