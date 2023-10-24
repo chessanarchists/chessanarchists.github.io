@@ -6,6 +6,7 @@
 				<ContentDoc />
 			</main>
 			<Chessboard />
+			<Clicker />
 		</div>
 	</transition>
 </template>
