@@ -12,39 +12,15 @@ created 'A Small History Of Chess'
 
 <br>
 
-**u/EggYolk2555**
-
-*info*
-
-<br>
-
-**u/En_passant_is_forced**
-
-*info*
-
-<br>
-
-**u/glove-these**
-
-*info*
-
-<br>
-
 **u/Imnotachessnoob**
 
-*info*
-
-<br>
-
-**u/jam-a-boi**
-
-*info*
+Helped with graphic design.
 
 <br>
 
 **u/Le-Scribe**
 
-*info*
+Subreddit Historian.
 
 <br>
 
