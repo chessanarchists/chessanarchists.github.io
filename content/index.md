@@ -1,4 +1,4 @@
-# News from AnarchyChess
+# Welcome to AnarchyChess
 
 ### **r/Chess vs r/AnarchyChess christmas tournament** <br>
 

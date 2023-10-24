@@ -2,7 +2,6 @@
 from the same-named .md file in the 'content' folder. We also import the stylesheet that applies styling to the text -->
 <template>
 	<div class="">
-		<nuxt-link to="/" class="text-blue-500">go back</nuxt-link>
 		<main>
 			<ContentDoc />
 		</main>
