@@ -1,6 +1,13 @@
 # The Official AnarchyChess Website
 
-# How it works
+here we create the first official website for the r/anarchychess community
+
+we have pages for our lore, history and custom made puzzles for you!
+
+https://chessanarchists.org
+
+
+# How the code works
 The pages or "routes" that the website has, correspond to the .vue files in the 'pages' folder.
 So the puzzles.vue file is what the user sees when they go to chessanarchists.org/puzzles
 
