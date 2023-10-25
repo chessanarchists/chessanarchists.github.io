@@ -26,11 +26,11 @@ from the /composables/useReddit.js file. It provides us with the reddit posts an
 	const { redditPosts } = useReddit();
 
 	function isImagePost(post) {
-		return post.url.endsWith(".jpg") || post.url.endsWith(".png" );
+		return post.url.endsWith(".jpg") || post.url.endsWith(".png") || post.url.endsWith(".webp" );
 	}
 
 	function getImageUrl(post) {
-		if (post.url.endsWith(".jpg") || post.url.endsWith(".png")) {
+		if (isImagePost(post)) {
 			return post.url;
 		} else if (post.preview && post.preview.images[0].source.url) {
 			return post.preview.images[0].source.url;
