@@ -14,13 +14,17 @@ created 'A Small History Of Chess'
 
 **u/Imnotachessnoob**
 
-Helped with graphic design.
+helped with graphic design
 
 <br>
 
+**u/karanruzgar**
+
+created the clicker-game
+
 **u/Le-Scribe**
 
-Subreddit Historian.
+subreddit historian.
 
 <br>
 
