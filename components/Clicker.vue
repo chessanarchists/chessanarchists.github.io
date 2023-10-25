@@ -1,7 +1,7 @@
 <template>
     <div class="flex-col">
 
-<table id="items">
+<!-- <table id="items">
     <span>Passant coins: <span style="color:rgb(175, 175, 0)">{{ passantcoins }}</span></span><br>
     <span>Coins per second: <span style="color:green">{{ dailypassant }}</span></span>
     <tr>
@@ -52,7 +52,7 @@
         <th><input type="text" id="save" v-model="savetext" @input="save = savetext.value;" placeholder="Put your save code here"></th>
         <th><textarea name="" id="" cols="15" rows="3">{{ save }}</textarea></th>
     </tr>
-</table>
+</table> -->
 
 </div>
 </template>
