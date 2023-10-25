@@ -7,6 +7,7 @@ The NuxtPage is where the actual page is inserted, depending on that url the use
 	<div class="h-screen overflow-x-hidden bg-background">
 		<title>AnarchyChess</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="google-site-verification" content="SEUS4st4glc-GKbHFIVwStnezBZnczA1yBSCENo8Hvo" />
 		<link href="https://fonts.cdnfonts.com/css/youtube-sans" rel="stylesheet" />
 
 		<div v-if="loading" class="fixed inset-0 flex items-center justify-center">
