@@ -1,63 +1,66 @@
+
 <template>
     <div class="flex-col">
-
-<table id="items">
-    <span>Passant coins: <span style="color:rgb(175, 175, 0)">{{ passantcoins }}</span></span><br>
-    <span>Coins per second: <span style="color:green">{{ dailypassant }}</span></span>
-   <tr>
-        <th class="table-item name">Beginner Chess Player</th>
-        <th class="table-item coins">{{ generators["1"]["f"] }} Passant Coins</th>
-        <th class="table-item buy"><input type="button" value="Buy" @click="buy('1');"></th>
-        <th class="table-item count">{{ generators["1"]["c"] }}</th>
-    </tr>
-     <tr>
-        <th class="table-item name">Average Chess Player</th>
-        <th class="table-item coins">{{ generators["2"]["f"] }} Passant Coins</th>
-        <th class="table-item buy"><input type="button" value="Buy" @click="buy('2')"></th>
-        <th class="table-item count">{{ generators["2"]["c"] }}</th>
-    </tr>
-    <tr>
-        <th class="table-item name">Professional Chess Player</th>
-        <th class="table-item coins">{{ generators["3"]["f"] }} Passant Coins</th>
-        <th class="table-item buy"><input type="button" value="Buy" @click="buy('3')"></th>
-        <th class="table-item count">{{ generators["3"]["c"] }}</th>
-    </tr>
-    <tr>
-        <th class="table-item name">chess.c*m</th>
-        <th class="table-item coins">{{ generators["4"]["f"] }} Passant Coins</th>
-        <th class="table-item buy"><input type="button" value="Buy" @click="buy('4')"></th>
-        <th class="table-item count">{{ generators["4"]["c"] }}</th>
-    </tr>
-    <tr>
-        <th class="table-item name">Gotham Chess</th>
-        <th class="table-item coins">{{ generators["5"]["f"] }} Passant Coins</th>
-        <th class="table-item buy"><input type="button" value="Buy" @click="buy('5')"></th>
-        <th class="table-item count">{{ generators["5"]["c"] }}</th>
-    </tr>
-    <tr>
-        <th class="table-item name">Lichess</th>
-        <th class="table-item coins">{{ generators["6"]["f"] }} Passant Coins</th>
-        <th class="table-item buy"><input type="button" value="Buy" @click="buy('6')"></th>
-        <th class="table-item count">{{ generators["6"]["c"] }}</th>
-    </tr>
-    <tr>
-        <th class="table-item name">Average r/AnarchyChess Enjoyer</th>
-        <th class="table-item coins">{{ generators["7"]["f"] }} Passant Coins</th>
-        <th class="table-item buy"><input type="button" value="Buy" @click="buy('7')"></th>
-        <th class="table-item count">{{ generators["7"]["c"] }}</th>
-    </tr>
-    <tr>
-        <th><button  @click="exportSave()">Export Save</button></th>
-        <th><button  @click="importSave()">Import Save</button></th>
-        <th><input type="text" id="save" v-model="savetext" @input="save = savetext.value;" placeholder="Put your save code here"></th>
-        <th><textarea name="" id="" cols="15" rows="3">{{ save }}</textarea></th>
-    </tr>
-</table>
-
-</div>
+        <client-only>
+            <table id="items">
+                    <span>Passant coins: <span style="color:rgb(175, 175, 0)">{{ passantcoins }}</span></span><br>
+                    <span>Coins per second: <span style="color:green">{{ dailypassant }}</span></span>
+                
+                <tr>
+                    <th class="table-item name">Beginner Chess Player</th>
+                    <th class="table-item coins">{{ generators["1"]["f"] }} Passant Coins</th>
+                    <th class="table-item buy"><input type="button" value="Buy" @click="buy('1');"></th>
+                    <th class="table-item count">{{ generators["1"]["c"] }}</th>
+                </tr>
+                <tr>
+                    <th class="table-item name">Average Chess Player</th>
+                    <th class="table-item coins">{{ generators["2"]["f"] }} Passant Coins</th>
+                    <th class="table-item buy"><input type="button" value="Buy" @click="buy('2')"></th>
+                    <th class="table-item count">{{ generators["2"]["c"] }}</th>
+                </tr>
+                <tr>
+                    <th class="table-item name">Professional Chess Player</th>
+                    <th class="table-item coins">{{ generators["3"]["f"] }} Passant Coins</th>
+                    <th class="table-item buy"><input type="button" value="Buy" @click="buy('3')"></th>
+                    <th class="table-item count">{{ generators["3"]["c"] }}</th>
+                </tr>
+                <tr>
+                    <th class="table-item name">chess.c*m</th>
+                    <th class="table-item coins">{{ generators["4"]["f"] }} Passant Coins</th>
+                    <th class="table-item buy"><input type="button" value="Buy" @click="buy('4')"></th>
+                    <th class="table-item count">{{ generators["4"]["c"] }}</th>
+                </tr>
+                <tr>
+                    <th class="table-item name">Gotham Chess</th>
+                    <th class="table-item coins">{{ generators["5"]["f"] }} Passant Coins</th>
+                    <th class="table-item buy"><input type="button" value="Buy" @click="buy('5')"></th>
+                    <th class="table-item count">{{ generators["5"]["c"] }}</th>
+                </tr>
+                <tr>
+                    <th class="table-item name">Lichess</th>
+                    <th class="table-item coins">{{ generators["6"]["f"] }} Passant Coins</th>
+                    <th class="table-item buy"><input type="button" value="Buy" @click="buy('6')"></th>
+                    <th class="table-item count">{{ generators["6"]["c"] }}</th>
+                </tr>
+                <tr>
+                    <th class="table-item name">Average r/AnarchyChess Enjoyer</th>
+                    <th class="table-item coins">{{ generators["7"]["f"] }} Passant Coins</th>
+                    <th class="table-item buy"><input type="button" value="Buy" @click="buy('7')"></th>
+                    <th class="table-item count">{{ generators["7"]["c"] }}</th>
+                </tr>
+                <tr>
+                    <th><button  @click="exportSave()">Export Save</button></th>
+                    <th><button  @click="importSave()">Import Save</button></th>
+                    <th><input type="text" id="save" v-model="savetext" @input="save = savetext.value;" placeholder="Put your save code here"></th>
+                    <th><textarea name="" id="" cols="15" rows="3">{{ save }}</textarea></th>
+                </tr>
+            </table>
+        </client-only>
+    </div>
 </template>
 
 <script setup>
+
 var passantcoins = ref(50000.00)
 var cps = 0
 var epc = 0
@@ -67,6 +70,9 @@ var dailypassant = ref(0.00)
 function passantcoin(){
     passantcoins.value=parseFloat((dailypassant.value+passantcoins.value).toFixed(2))
 }
+onMounted(() => {
+    setInterval(passantcoin,1000)  
+})
 var generators=ref({
     "1":{
         "f":10,
@@ -112,7 +118,6 @@ function buy(obj){
         generators.value[obj]["c"]+=1
     }
 }
-//setInterval(passantcoin,1000)
 function exportSave(){
     save.value = btoa(`${JSON.stringify(generators.value)}!!${passantcoins.value}!!${dailypassant.value}`)
     savetext.value = btoa(`${JSON.stringify(generators.value)}!!${passantcoins.value}!!${dailypassant.value}`)
@@ -125,7 +130,8 @@ function importSave(){
 </script>
 
 <style scoped>
-    #pc{
+
+#pc{
   border: 3px solid red;
   color:rgb(0, 0, 0);
   border-radius: 5px;
