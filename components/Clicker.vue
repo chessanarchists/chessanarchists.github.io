@@ -1,16 +1,16 @@
 <template>
     <div class="flex-col">
 
-<!-- <table id="items">
+<table id="items">
     <span>Passant coins: <span style="color:rgb(175, 175, 0)">{{ passantcoins }}</span></span><br>
     <span>Coins per second: <span style="color:green">{{ dailypassant }}</span></span>
-    <tr>
+   <!--<tr>
         <th class="table-item name">Beginner Chess Player</th>
         <th class="table-item coins">{{ generators["1"]["f"] }} Passant Coins</th>
         <th class="table-item buy"><input type="button" value="Buy" @click="buy('1');"></th>
         <th class="table-item count">{{ generators["1"]["c"] }}</th>
     </tr>
-    <tr>
+     <tr>
         <th class="table-item name">Average Chess Player</th>
         <th class="table-item coins">{{ generators["2"]["f"] }} Passant Coins</th>
         <th class="table-item buy"><input type="button" value="Buy" @click="buy('2')"></th>
@@ -51,8 +51,8 @@
         <th><button  @click="importSave()">Import Save</button></th>
         <th><input type="text" id="save" v-model="savetext" @input="save = savetext.value;" placeholder="Put your save code here"></th>
         <th><textarea name="" id="" cols="15" rows="3">{{ save }}</textarea></th>
-    </tr>
-</table> -->
+    </tr> -->
+</table>
 
 </div>
 </template>
