@@ -1,10 +1,10 @@
 export function useFEN() {
-    function convert(fen) {
-        const { pieces } = usePieces();
-        const rows = fen.split(' ')[0].split('/');
-        const positionArray = [];
+	function convert(fen) {
+		const { pieces } = usePieces();
+		const rows = fen.split(" ")[0].split("/");
+		const positionArray = [];
 
-        const pieceMap = {
+		const pieceMap = {
 			p: "Pawn",
 			r: "Rook",
 			n: "Knight",
@@ -12,28 +12,26 @@ export function useFEN() {
 			q: "Queen",
 			k: "King",
 		};
-		
-      
-        for (let row of rows) {
-          for (let char of row) {
-            if (/\d/.test(char)) {
-              const emptySquares = parseInt(char, 10);
-              for (let i = 0; i < emptySquares; i++) {
-                positionArray.push("");
-              }
-            } else {
-              const isUpperCase = char === char.toUpperCase(); // Check if the character is uppercase
-              const pieceKey = pieceMap[char.toLowerCase()] + (isUpperCase ? 'W' : 'B');
-              const piece = pieces[pieceKey];
-              positionArray.push(piece);
-            }
-          }
-        }
-      
-        return positionArray;
-      }
 
-    return {
-        convert,
-    }
+		for (let row of rows) {
+			for (let char of row) {
+				if (/\d/.test(char)) {
+					const emptySquares = parseInt(char, 10);
+					for (let i = 0; i < emptySquares; i++) {
+						positionArray.push("");
+					}
+				} else {
+					let isUpperCase = char === char.toUpperCase();
+					let pieceKey = pieceMap[char.toLowerCase()] + (isUpperCase ? "W" : "B");
+					positionArray.push(pieces[pieceKey]);
+				}
+			}
+		}
+
+		return positionArray;
+	}
+
+	return {
+		convert,
+	};
 }
