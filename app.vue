@@ -23,6 +23,17 @@ The NuxtPage is where the actual page is inserted, depending on that url the use
 
 <script setup lang="ts">
 	const nuxtApp = useNuxtApp();
+
+	useHead({
+		title: "AnarchyChess",
+		meta: [
+			{
+				name: "description",
+				content: "The official AnarchyChess website - explore current events, our chess history, puzzles and more!",
+			},
+		],
+	});
+
 	const loading = ref(false);
 	nuxtApp.hook("page:start", () => {
 		loading.value = true;
