@@ -22,6 +22,8 @@ helped with graphic design
 
 created the clicker-game
 
+<br>
+
 **u/Le-Scribe**
 
 subreddit historian.
