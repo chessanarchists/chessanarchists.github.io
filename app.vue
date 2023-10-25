@@ -33,7 +33,7 @@ The NuxtPage is where the actual page is inserted, depending on that url the use
 			},
 			{
 				name: "google-site-verification", 
-				content: "SEUS4st4glc-GKbHFIVwStnezBZnczA1yBSCENo8Hvo",
+				content: "QEVUZy0YoL59n3B3BG3mrbMzniGS_20sFS2mKCujjgs",
 			},
 		],
 	});
