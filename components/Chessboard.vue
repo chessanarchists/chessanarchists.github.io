@@ -37,7 +37,7 @@
 
 <script setup>
 	const { pieces } = usePieces();
-	const { EnPassent, test } = usePuzzles();
+	const { EnPassent, starting } = usePuzzles();
 	const { convert } = useFEN();
 	let puzzle = EnPassent;
 
@@ -85,10 +85,8 @@
 			status.value = "Wrong!"
 			return (board.value[from.value.col][from.value.row] = draggedPiece.value);
 		}
-		if (draggedPiece.value && !board.value[colI][rowI]) {
-			board.value[colI][rowI] = draggedPiece.value;
-			board.value[from.value.col][from.value.row] = null;
-		}
+		board.value[colI][rowI] = draggedPiece.value;
+		board.value[from.value.col][from.value.row] = null;
 		status.value = "Holy Hell!"
 	}
 
