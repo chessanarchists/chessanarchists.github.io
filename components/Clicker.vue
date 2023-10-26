@@ -1,7 +1,13 @@
 
 <template>
+    <h1 class="ml-4">Clicker Game</h1>
     <div class="flex flex-col justify-center items-center">
         <client-only>
+            <!-- Idea: add the tailwind class 'cursor-pointer' to all the clickable fields so that 
+                pc users can see that its clickable and the cursor will change
+
+                also this code with repeating elements could be done a fair bit shorter by using a v-for loop, maybe look into that 
+            ~jassin -->
             <table id="items">
                     <span>Passant coins: <span style="color:rgb(175, 175, 0)">{{ passantcoins }}</span></span><br>
                     <span>Coins per second: <span style="color:green">{{ dailypassant }}</span></span>
