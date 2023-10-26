@@ -2,23 +2,34 @@
 
 <template>
 	<div class="flex flex-col justify-center items-center">
-		<div id="chessboard" v-if="pieces.PawnW" class="">
-			<div class="square" v-for="(piece, i) in position" @click="handleClick(i, $event)" :class="{ 'bg-secondary': row(i), 'bg-accent': !row(i) }">
+		<div id="chessboard" v-if="board">
+			<div class="square" v-for="(row, colI) in board" :key="colI">
 				<div
-					:key="i"
-					class="piece flex items-center justify-center h-full"
-					:draggable="!!piece"
-					@dragstart="dragStart(i, $event)"
-					@dragover.prevent="dragOver(i)"
-					@dragend="dragEnd(i)"
-					@drop="drop(i)">
-					<client-only>
-						<faIcon v-if="piece" :icon="icon(piece)" :class="[piece.color, { 'text-yellow-200': activePiece == i }]" class="text-4xl" />
-					</client-only>
+					class="square"
+					v-for="(piece, rowI) in row"
+					:key="rowI"
+					@click="handleClick(colI, rowI)"
+					:class="{ 'bg-secondary': (colI + rowI) % 2 === 0, 'bg-accent': (colI + rowI) % 2 !== 0 }">
+					<div
+						:key="colI * 8 + rowI"
+						class="piece flex items-center justify-center h-full"
+						:draggable="!!piece"
+						@dragstart="dragStart(colI, rowI, $event)"
+						@dragover.prevent="dragOver(colI, rowI)"
+						@dragend="dragEnd(colI, rowI)"
+						@drop="drop(colI, rowI)">
+						<client-only>
+							<faIcon
+								v-if="piece"
+								:icon="icon(piece)"
+								:class="[piece.color, { 'text-yellow-200': activePiece && activePiece.row === rowI && activePiece.col === colI }]"
+								class="text-4xl" />
+						</client-only>
+					</div>
 				</div>
 			</div>
 		</div>
-		<p class="">{{ status }}</p>
+		<p class="min-h-[1.5em]">{{ status }}</p>
 		<input v-model="FEN" type="text" />
 		<button @click="build(FEN)">Build</button>
 	</div>
@@ -26,83 +37,17 @@
 
 <script setup>
 	const { pieces } = usePieces();
-	const { EnPassent } = usePuzzles();
+	const { EnPassent, test } = usePuzzles();
 	const { convert } = useFEN();
+	let puzzle = EnPassent;
 
 	let status = ref("");
 	let FEN = ref("");
 	function build(fen) {
-		position.value = convert(fen)
+		board.value = convert(fen)[0].map((_, colIndex) => convert(fen).map((row) => row[colIndex]));
 	}
 
-	const position = ref([
-		pieces.RookB,
-		pieces.KnightB,
-		pieces.BishopB,
-		pieces.QueenB,
-		pieces.KingB,
-		pieces.BishopB,
-		pieces.KnightB,
-		pieces.RookB,
-		pieces.PawnB,
-		pieces.PawnB,
-		pieces.PawnB,
-		pieces.PawnB,
-		pieces.PawnB,
-		pieces.PawnB,
-		pieces.PawnB,
-		pieces.PawnB,
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		pieces.PawnW,
-		pieces.PawnW,
-		pieces.PawnW,
-		pieces.PawnW,
-		pieces.PawnW,
-		pieces.PawnW,
-		pieces.PawnW,
-		pieces.PawnW,
-		pieces.RookW,
-		pieces.KnightW,
-		pieces.BishopW,
-		pieces.QueenW,
-		pieces.KingW,
-		pieces.BishopW,
-		pieces.KnightW,
-		pieces.RookW,
-	]);
-
-	position.value = EnPassent.position;
+	const board = ref(puzzle.position[0].map((_, colIndex) => puzzle.position.map((row) => row[colIndex])));
 
 	const icon = (piece) => {
 		return ["far", piece.name];
@@ -118,38 +63,49 @@
 
 	const from = ref(null);
 
-	function dragStart(index, $event) {
-		if (position.value[index]) {
-			activePiece.value = index;
-			from.value = index;
-			draggedPiece.value = position.value[index];
+	function dragStart(colI, rowI, $event) {
+		if (board.value[colI][rowI]) {
+			activePiece.value = { row: colI, col: rowI };
+			from.value = { col: colI, row: rowI };
+			draggedPiece.value = board.value[colI][rowI];
 		}
 	}
 
-	function dragOver(index) {
-		if (draggedPiece.value && !position.value[index]) {
+	function dragOver(colI, rowI) {
+		if (draggedPiece.value && !board.value[colI][rowI]) {
 		}
 	}
 
-	function dragEnd(index) {
-		draggedPiece.value = "";
+	function dragEnd() {
+		draggedPiece.value = null;
 	}
 
-	function drop(index) {
-		if (!(from.value == 30 && index == 21)) {
-			status.value = "Wrong Move";
-			position.value[from.value] = draggedPiece.value;
-		} else if (draggedPiece.value && !position.value[index]) {
-			position.value[index] = draggedPiece.value;
-			position.value[from.value] = "";
-			status.value = "holy hell, congrats!!";
+	function drop(colI, rowI) {
+		if (!correctMove(notation(from.value.col, from.value.row), notation(colI, rowI))) {
+			status.value = "Wrong!"
+			return (board.value[from.value.col][from.value.row] = draggedPiece.value);
 		}
+		if (draggedPiece.value && !board.value[colI][rowI]) {
+			board.value[colI][rowI] = draggedPiece.value;
+			board.value[from.value.col][from.value.row] = null;
+		}
+		status.value = "Holy Hell!"
 	}
 
-	const activePiece = ref(null);
+	const files = "abcdefgh";
+	function notation(col, row) {
+		return `${files[col]}${8 - row}`;
+	}
 
-	function handleClick(i, $event) {
-		activePiece.value = i;
+	const activePiece = ref({ col: null, row: null });
+
+	const correctMove = (from, to) => {
+		return puzzle.solution[0] == from && puzzle.solution[1] == to;
+	};
+
+	function handleClick(col, row) {
+		activePiece.value.col = col;
+		activePiece.value.row = row;
 	}
 </script>
 
