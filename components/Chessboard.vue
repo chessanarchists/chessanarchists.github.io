@@ -22,7 +22,7 @@
 							<faIcon
 								v-if="piece"
 								:icon="icon(piece)"
-								:class="[piece.color, { 'text-yellow-200': activePiece && activePiece.row === rowI && activePiece.col === colI }]"
+								:class="[{ 'text-white': piece.slice(-1) == 'W' }, { 'text-yellow-200': activePiece && activePiece.row === rowI && activePiece.col === colI }]"
 								class="text-4xl" />
 						</client-only>
 					</div>
@@ -36,10 +36,9 @@
 </template>
 
 <script setup>
-	const { pieces } = usePieces();
-	const { EnPassent, starting } = usePuzzles();
+	const { puzzles } = usePuzzles();
 	const { convert } = useFEN();
-	let puzzle = EnPassent;
+	let puzzle = puzzles.EnPassent;
 
 	let status = ref("");
 	let FEN = ref("");
@@ -50,7 +49,7 @@
 	const board = ref(puzzle.position[0].map((_, colIndex) => puzzle.position.map((row) => row[colIndex])));
 
 	const icon = (piece) => {
-		return ["far", piece.name];
+		return ["far", `chess-${piece.toLowerCase().substring(0, piece.length - 1)}`];
 	};
 
 	const row = (index) => {
@@ -82,12 +81,12 @@
 
 	function drop(colI, rowI) {
 		if (!correctMove(notation(from.value.col, from.value.row), notation(colI, rowI))) {
-			status.value = "Wrong!"
+			status.value = "Wrong!";
 			return (board.value[from.value.col][from.value.row] = draggedPiece.value);
 		}
 		board.value[colI][rowI] = draggedPiece.value;
 		board.value[from.value.col][from.value.row] = null;
-		status.value = "Holy Hell!"
+		status.value = "Holy Hell!";
 	}
 
 	const files = "abcdefgh";

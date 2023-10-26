@@ -1,6 +1,5 @@
 export function useFEN() {
 	function convert(fen) {
-		const { pieces } = usePieces();
 		const rows = fen.split(" ")[0].split("/");
 		const positionArray = [];
 	
@@ -19,15 +18,15 @@ export function useFEN() {
 				if (/\d/.test(char)) {
 					const emptySquares = parseInt(char, 10);
 					for (let i = 0; i < emptySquares; i++) {
-						rowArray.push(""); // Add empty squares to the row
+						rowArray.push("");
 					}
 				} else {
 					let isUpperCase = char === char.toUpperCase();
 					let pieceKey = pieceMap[char.toLowerCase()] + (isUpperCase ? "W" : "B");
-					rowArray.push(pieces[pieceKey]);
+					rowArray.push(pieceKey);
 				}
 			}
-			positionArray.push(rowArray); // Add the row to the 2D array
+			positionArray.push(rowArray);
 		}
 	
 		return positionArray;
