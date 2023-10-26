@@ -30,7 +30,7 @@
 			</div>
 		</div>
 		<p class="min-h-[1.5em]">{{ status }}</p>
-		<input v-model="FEN" type="text" />
+		<input v-model="FEN" type="text" placeholder="build a position from FEN" />
 		<button @click="build(FEN)">Build</button>
 	</div>
 </template>
@@ -108,7 +108,8 @@
 
 <style>
 	#chessboard {
-		background-color: red;
+		background-image: url('~/assets/images/rick.jpg');
+		background-size: cover;
 		display: flex;
 		flex-wrap: wrap;
 		width: 320px;
