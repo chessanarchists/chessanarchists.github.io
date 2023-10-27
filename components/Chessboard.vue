@@ -52,12 +52,6 @@
 		return ["far", `chess-${piece.toLowerCase().substring(0, piece.length - 1)}`];
 	};
 
-	const row = (index) => {
-		if ((Math.floor((63 - index) / 8) + 1) % 2 === 0) {
-			return index % 2 === 0;
-		} else return index % 2 !== 0;
-	};
-
 	const draggedPiece = ref(null);
 
 	const from = ref(null);

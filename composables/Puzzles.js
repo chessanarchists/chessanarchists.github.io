@@ -13,6 +13,6 @@ export function usePuzzles() {
     }
 
 	return {
-		puzzles
+		puzzles,
 	};
 }
