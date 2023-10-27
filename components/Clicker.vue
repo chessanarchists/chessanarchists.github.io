@@ -4,52 +4,21 @@
     <div class="flex flex-col justify-center items-center">
         <client-only>
             <!-- Idea: this code with repeating elements could be done a fair bit shorter by using a v-for loop, maybe look into that 
-            ~jassin -->
+            ~jassin 
+
+            Thank you for the advice.
+
+            ~karanruzgar
+        -->
             <table id="items">
                     <span>Passant coins: <span style="color:rgb(175, 175, 0)">{{ passantcoins }}</span></span><br>
                     <span>Coins per second: <span style="color:green">{{ dailypassant }}</span></span>
                 
-                <tr>
-                    <th class="table-item w-20 sm:w-40 name">Beginner Chess Player</th>
-                    <th class="table-item w-20 sm:w-40 coins">{{ generators["1"]["f"] }} Passant Coins</th>
-                    <th class="table-item buy" @click="buy('1')">Buy</th>
-                    <th class="table-item w-20 sm:w-40 count">{{ generators["1"]["c"] }}</th>
-                </tr>
-                <tr>
-                    <th class="table-item name">Average Chess Player</th>
-                    <th class="table-item coins">{{ generators["2"]["f"] }} Passant Coins</th>
-                    <th class="table-item buy" @click="buy('2')">Buy</th>
-                    <th class="table-item count">{{ generators["2"]["c"] }}</th>
-                </tr>
-                <tr>
-                    <th class="table-item name">Professional Chess Player</th>
-                    <th class="table-item coins">{{ generators["3"]["f"] }} Passant Coins</th>
-                    <th class="table-item buy" @click="buy('3')">Buy</th>
-                    <th class="table-item count">{{ generators["3"]["c"] }}</th>
-                </tr>
-                <tr>
-                    <th class="table-item name">chess.c*m</th>
-                    <th class="table-item coins">{{ generators["4"]["f"] }} Passant Coins</th>
-                    <th class="table-item buy" @click="buy('4')">Buy</th>
-                    <th class="table-item count">{{ generators["4"]["c"] }}</th>
-                </tr>
-                <tr>
-                    <th class="table-item name">Gotham Chess</th>
-                    <th class="table-item coins">{{ generators["5"]["f"] }} Passant Coins</th>
-                    <th class="table-item buy" @click="buy('5')">Buy</th>
-                    <th class="table-item count">{{ generators["5"]["c"] }}</th>
-                </tr>
-                <tr>
-                    <th class="table-item name">Lichess</th>
-                    <th class="table-item coins">{{ generators["6"]["f"] }} Passant Coins</th>
-                    <th class="table-item buy" @click="buy('6')">Buy</th>
-                    <th class="table-item count">{{ generators["6"]["c"] }}</th>
-                </tr>
-                <tr>
-                    <th class="table-item name">Average r/AnarchyChess Enjoyer</th>
-                    <th class="table-item coins">{{ generators["7"]["f"] }} Passant Coins</th>
-                    <th class="table-item buy" @click="buy('7')">Buy</th>
-                    <th class="table-item count">{{ generators["7"]["c"] }}</th>
+                <tr v-for="g,i in generators">
+                    <th class="table-item w-20 sm:w-40 name">{{ g.n }}</th>
+                    <th class="table-item w-20 sm:w-40 coins">{{ g.f }} Passant Coins</th>
+                    <th class="table-item buy" @click="buy(i)">Buy</th>
+                    <th class="table-item w-20 sm:w-40 count">{{ g.c }}</th>
                 </tr>
                 <tr>
                     <th><button  @click="exportSave()">Export Save</button></th>
@@ -76,43 +45,43 @@ function passantcoin(){
 onMounted(() => {
     setInterval(passantcoin,1000)  
 })
-var generators=ref({
-    "1":{
+var generators=ref([{
+        "n":"Beginner Chess Player",
         "f":10,
         "g":0.1,
         "c":0
-    },
-    "2":{
+    },{
+        "n":"Average Chess Player",
         "f":50,
         "g":2,
         "c":0
-    },
-    "3":{
+    },{
+        "n":"Professional Chess Player",
         "f":600,
         "g":10,
         "c":0
-    },
-    "4":{
+    },{
+        "n":"chess.c*m",
         "f":2000,
         "g":100,
         "c":0
-    },
-    "5":{
+    },{
+        "n":"Gotham Chess",
         "f":10000,
         "g":500,
         "c":0
-    },
-    "6":{
+    },{
+        "n":"Lichess",
         "f":100000,
         "g":1000,
         "c":0
-    },
-    "7":{
+    },{
+        "n":"Average r/AnarchyChess Enjoyer",
         "f":2000000,
         "g":20000,
         "c":0
     }
-});
+]);
 function buy(obj){
     if(passantcoins.value >= generators.value[obj]["f"]){
         passantcoins.value=parseFloat((passantcoins.value-generators.value[obj]["f"]).toFixed(2))
