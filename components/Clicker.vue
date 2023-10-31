@@ -3,13 +3,6 @@
     <h1 class="ml-4">Clicker Game</h1>
     <div class="flex flex-col justify-center items-center">
         <client-only>
-            <!-- Idea: this code with repeating elements could be done a fair bit shorter by using a v-for loop, maybe look into that 
-            ~jassin 
-
-            Thank you for the advice.
-
-            ~karanruzgar
-        -->
             <table id="items">
                     <span>Passant coins: <span style="color:rgb(175, 175, 0)">{{ passantcoins }}</span></span><br>
                     <span>Coins per second: <span style="color:green">{{ dailypassant }}</span></span>
