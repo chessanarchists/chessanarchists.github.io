@@ -8,13 +8,14 @@ main {
 }
 :deep(h2) {
 	font-size: x-large;
+	pointer-events: none;
 }
 :deep(h3) {
 	font-size: large;
-	
+	pointer-events: none;
 }
 
-:deep(sm) {
+:deep(small) {
 	font-size: 0.8em;
 	color: gray;
 }

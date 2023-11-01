@@ -6,7 +6,7 @@
 
 ### **r/Chess vs r/AnarchyChess <br> christmas tournament** <br>
 
-<sm>*Date coming soon*</sm>
+<small>*Date coming soon*</small>
 
 **Winner - (TBD)**
 
@@ -14,6 +14,6 @@
 
 ### **AnarchyChess 960**
 
-<sm>*Date coming soon*</sm>
+<small>*Date coming soon*</small>
 
 **Winner - (TBD)**

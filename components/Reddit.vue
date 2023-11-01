@@ -5,12 +5,15 @@ from the /composables/useReddit.js file. It provides us with the reddit posts an
 		<div class="py-3">
 			<p class="text-2xl">Hot posts from the subreddit</p>
 			<a href="https://reddit.com/r/anarchychess" class="underline text-accent">
-				Go to r/anarchychess 
-				<client-only><faIcon :icon="['fab', 'reddit']" class="text-xl"/></client-only>
+				Go to r/anarchychess
+				<client-only><faIcon :icon="['fab', 'reddit']" class="text-xl" /></client-only>
 			</a>
 		</div>
 		<div class="flex flex-wrap justify-center space-x-[2%] p-3 bg-primary">
-			<div v-for="(post, index) in redditPosts.filter(isImagePost).slice(0, 3)" :key="index" class="w-screen my-2 sm:w-[30%] rounded bg-secondary flex flex-col justify-center">
+			<div
+				v-for="(post, index) in redditPosts.filter(isImagePost).slice(0, 3)"
+				:key="index"
+				class="w-screen my-2 sm:w-[30%] rounded bg-secondary flex flex-col justify-center scale-[0.9] hover:scale-[1] transition-all">
 				<a :href="`https://reddit.com${post.permalink}`">
 					<p>{{ post.title }}</p>
 					<img :src="getImageUrl(post)" width="250" height="200" class="m-auto my-auto" />
@@ -26,7 +29,7 @@ from the /composables/useReddit.js file. It provides us with the reddit posts an
 	const { redditPosts } = useReddit();
 
 	function isImagePost(post) {
-		return post.url.endsWith(".jpg") || post.url.endsWith(".png") || post.url.endsWith(".webp" );
+		return post.url.endsWith(".jpg") || post.url.endsWith(".png") || post.url.endsWith(".webp");
 	}
 
 	function getImageUrl(post) {
