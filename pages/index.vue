@@ -4,7 +4,7 @@
 	The code behind the Reddit component can be found in /components/Reddit.vue -->
 <template>
 	<transition>
-		<div>
+		<div class="my-1">
 			<div class="flex space-x-2">
 				<main class="">
 					<ContentDoc />

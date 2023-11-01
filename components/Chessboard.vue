@@ -22,7 +22,7 @@
 							<faIcon
 								v-if="piece"
 								:icon="icon(piece)"
-								:class="[{ 'text-white': piece.slice(-1) == 'W' }, { 'text-yellow-200': activePiece && activePiece.row === rowI && activePiece.col === colI }]"
+								:class="[{ 'text-white': piece.slice(-1) == 'W' }, { 'text-yellow-200 scale-110': activePiece && activePiece.row === rowI && activePiece.col === colI }]"
 								class="text-4xl" />
 						</client-only>
 					</div>
@@ -57,8 +57,9 @@
 	const from = ref(null);
 
 	function dragStart(colI, rowI, $event) {
+		emptyActive()
 		if (board.value[colI][rowI]) {
-			activePiece.value = { row: colI, col: rowI };
+			activePiece.value = { col: colI, row: rowI };
 			from.value = { col: colI, row: rowI };
 			draggedPiece.value = board.value[colI][rowI];
 		}
@@ -76,11 +77,13 @@
 	function drop(colI, rowI) {
 		if (!correctMove(notation(from.value.col, from.value.row), notation(colI, rowI))) {
 			status.value = "Wrong!";
-			return (board.value[from.value.col][from.value.row] = draggedPiece.value);
+			emptyActive()
+			return
 		}
 		board.value[colI][rowI] = draggedPiece.value;
-		board.value[from.value.col][from.value.row] = null;
+		board.value[from.value.col][from.value.row] = "";
 		status.value = "Holy Hell!";
+		emptyActive()
 	}
 
 	const files = "abcdefgh";
@@ -94,7 +97,25 @@
 		return puzzle.solution[0] == from && puzzle.solution[1] == to;
 	};
 
+	function emptyActive() {
+		activePiece.value.col = null
+		activePiece.value.row = null
+		from.value = { col: null, row: null }
+		draggedPiece.value = null
+	}
+
 	function handleClick(col, row) {
+		if ((from.value && from.value.col == col && from.value.row == row)) {
+			return emptyActive()
+		}
+
+		if (activePiece.value.col && draggedPiece.value !== "") {
+			drop(col, row)
+			emptyActive()
+			return
+		}
+		draggedPiece.value = board.value[col][row]
+		from.value = { col: col, row: row };
 		activePiece.value.col = col;
 		activePiece.value.row = row;
 	}
