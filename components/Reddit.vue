@@ -13,7 +13,7 @@ from the /composables/useReddit.js file. It provides us with the reddit posts an
 			<div
 				v-for="(post, index) in redditPosts.filter(isImagePost).slice(0, 3)"
 				:key="index"
-				class="w-screen my-2 sm:w-[30%] rounded bg-secondary flex flex-col justify-center scale-[0.9] hover:scale-[1] transition-all">
+				class="w-screen my-2 sm:w-[30%] rounded bg-secondary flex flex-col justify-center scale-[0.9] hover:scale-[1] transition-all shadow-2xl">
 				<a :href="`https://reddit.com${post.permalink}`">
 					<p>{{ post.title }}</p>
 					<img :src="getImageUrl(post)" width="250" height="200" class="m-auto my-auto" />

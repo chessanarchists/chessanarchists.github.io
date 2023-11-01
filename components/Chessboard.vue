@@ -86,6 +86,7 @@
 		emptyActive()
 	}
 
+	
 	const files = "abcdefgh";
 	function notation(col, row) {
 		return `${files[col]}${8 - row}`;
