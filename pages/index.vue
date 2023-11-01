@@ -9,7 +9,7 @@
 				<main class="">
 					<ContentDoc />
 				</main>
-				<div class="flex-1 mt-2 bg-red-300 rounded-lg shadow-md overflow-hidden">
+				<div class="flex-1 mt-2 bg-red-300 rounded-lg shadow-md overflow-hidden invisible md:visible">
 					<div
 						class="h-full w-full overflow-hidden bg-cover"
 						style="background-position: 53% 0; background-image: url('https://styles.redditmedia.com/t5_2yvry/styles/bannerBackgroundImage_9u1yjgo4tqba1.jpg');">

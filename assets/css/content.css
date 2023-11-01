@@ -2,13 +2,21 @@ main {
 	margin-left: 1em;
 }
 :deep(h1) {
-	font-size: 1.9em;
+	font-size: 1.85em;
+	text-decoration: underline 1px solid rgb(162, 161, 161, 0.2);
+	text-underline-position: under;
 }
 :deep(h2) {
 	font-size: x-large;
 }
 :deep(h3) {
 	font-size: large;
+	
+}
+
+:deep(sm) {
+	font-size: 0.8em;
+	color: gray;
 }
 
 :deep(table) {

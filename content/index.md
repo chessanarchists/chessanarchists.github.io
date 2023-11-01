@@ -1,12 +1,12 @@
 # Welcome to AnarchyChess
 
-### Current and upcoming events:
+## Current and upcoming events:
 
 <br>
 
-### **r/Chess vs r/AnarchyChess christmas tournament** <br>
+### **r/Chess vs r/AnarchyChess <br> christmas tournament** <br>
 
-*Date coming soon*
+<sm>*Date coming soon*</sm>
 
 **Winner - (TBD)**
 
@@ -14,6 +14,6 @@
 
 ### **AnarchyChess 960**
 
-*Date coming soon*
+<sm>*Date coming soon*</sm>
 
 **Winner - (TBD)**
