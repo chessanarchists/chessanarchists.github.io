@@ -15,6 +15,10 @@ from the same-named .md file in the 'content' folder. We also import the stylesh
 				name: "robots",
 				content: "index, follow, noarchive",
 			},
+			{
+				name: "description",
+				content: "How did (Anarchy)Chess come to be? Read 'A small history of chess' and discover the amazing backgrounds of the first en passant!",
+			},
 		],
 	});
 </script>
