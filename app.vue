@@ -11,12 +11,12 @@ The NuxtPage is where the actual page is inserted, depending on that url the use
 
 		<div v-if="loading" class="fixed inset-0 flex items-center justify-center">
 			<div class="animate-spin">
-				<img src="~/assets/images/martin.png" width="200"/>
+				<img src="~/assets/images/martin.png" width="200" />
 			</div>
 		</div>
 
 		<NuxtLayout>
-			<NuxtPage/>
+			<NuxtPage />
 		</NuxtLayout>
 	</div>
 </template>
@@ -32,8 +32,43 @@ The NuxtPage is where the actual page is inserted, depending on that url the use
 				content: "The official AnarchyChess website - explore current events, our chess history, puzzles and more!",
 			},
 			{
-				name: "google-site-verification", 
+				name: "google-site-verification",
 				content: "QEVUZy0YoL59n3B3BG3mrbMzniGS_20sFS2mKCujjgs",
+			},
+			{
+				charset: "utf-8",
+			},
+			{
+				name: "viewport",
+				content: "width=device-width, initial-scale=1",
+			},
+			{
+				name: "og:title",
+				content: "AnarchyChess website",
+			},
+			{
+				name: "og:description",
+				content: "The official AnarchyChess website - explore current events, our chess history, puzzles and more!",
+			},
+			{
+				name: "og:type",
+				content: "website",
+			},
+			{
+				name: "og:url",
+				content: "https://chessanarchists.org",
+			},
+			{
+				name: "author",
+				content: "content by AnarchyChess modteam, website by Jässin Aouani",
+			},
+			{
+				name: "keywords",
+				content: "chess, anarchychess, en passent, holy hell, official",
+			},
+			{
+				name: "robots",
+				content: "index, follow, noarchive",
 			},
 		],
 	});

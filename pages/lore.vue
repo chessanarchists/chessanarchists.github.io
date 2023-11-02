@@ -8,6 +8,17 @@ from the same-named .md file in the 'content' folder. We also import the stylesh
 	</div>
 </template>
 
+<script setup>
+	useHead({
+		meta: [
+			{
+				name: "robots",
+				content: "index, follow, noarchive",
+			},
+		],
+	});
+</script>
+
 <style scoped>
 	@import "~/assets/css/content.css";
 </style>

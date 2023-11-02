@@ -11,6 +11,17 @@
 	</transition>
 </template>
 
+<script setup>
+	useHead({
+		meta: [
+			{
+				name: "robots",
+				content: "index, follow, noarchive",
+			},
+		],
+	});
+</script>
+
 <style scoped>
 	@import "~/assets/css/content.css";
 </style>
