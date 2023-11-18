@@ -2,6 +2,7 @@
 <template>
 	<transition>
 		<div>
+			<Confetti/>
 			<main>
 				<ContentDoc />
 			</main>

@@ -2,29 +2,31 @@
 
 <template>
 	<div class="flex flex-col justify-center items-center">
-		<div id="chessboard" v-if="board">
-			<div class="square" v-for="(row, colI) in board" :key="colI">
-				<div
-					class="square"
-					v-for="(piece, rowI) in row"
-					:key="rowI"
-					@click="handleClick(colI, rowI)"
-					:class="{ 'bg-secondary': (colI + rowI) % 2 === 0, 'bg-accent': (colI + rowI) % 2 !== 0 }">
+		<div class="border-8 border-red-400">
+			<div id="chessboard" v-if="board" class="">
+				<div class="square" v-for="(row, colI) in board" :key="colI">
 					<div
-						:key="colI * 8 + rowI"
-						class="piece flex items-center justify-center h-full"
-						:draggable="!!piece"
-						@dragstart="dragStart(colI, rowI, $event)"
-						@dragover.prevent="dragOver(colI, rowI)"
-						@dragend="dragEnd(colI, rowI)"
-						@drop="drop(colI, rowI)">
-						<client-only>
-							<faIcon
-								v-if="piece"
-								:icon="icon(piece)"
-								:class="[{ 'text-white': piece.slice(-1) == 'W' }, { 'text-yellow-200 scale-110': activePiece && activePiece.row === rowI && activePiece.col === colI }]"
-								class="text-4xl" />
-						</client-only>
+						class="square"
+						v-for="(piece, rowI) in row"
+						:key="rowI"
+						@click="handleClick(colI, rowI)"
+						:class="{ 'bg-secondary': (colI + rowI) % 2 === 0, 'bg-accent': (colI + rowI) % 2 !== 0 }">
+						<div
+							:key="colI * 8 + rowI"
+							class="piece flex items-center justify-center h-full"
+							:draggable="!!piece"
+							@dragstart="dragStart(colI, rowI, $event)"
+							@dragover.prevent="dragOver(colI, rowI)"
+							@dragend="dragEnd(colI, rowI)"
+							@drop="drop(colI, rowI)">
+							<client-only>
+								<faIcon
+									v-if="piece"
+									:icon="icon(piece)"
+									:class="[{ 'text-white': piece.slice(-1) == 'W' }, { 'text-yellow-200 scale-110': activePiece && activePiece.row === rowI && activePiece.col === colI }]"
+									class="text-4xl" />
+							</client-only>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -36,6 +38,7 @@
 </template>
 
 <script setup>
+	const confetti = useState("confetti")
 	const { puzzles } = usePuzzles();
 	const { convert } = useFEN();
 	let puzzle = puzzles.EnPassent;
@@ -82,6 +85,7 @@
 		}
 		board.value[colI][rowI] = draggedPiece.value;
 		board.value[from.value.col][from.value.row] = "";
+		correctGuess()
 		status.value = "Holy Hell!";
 		emptyActive()
 	}
@@ -119,6 +123,13 @@
 		from.value = { col: col, row: row };
 		activePiece.value.col = col;
 		activePiece.value.row = row;
+	}
+
+	function correctGuess() {
+		confetti.value = true
+		setTimeout(() => {
+			confetti.value = false
+		}, 5000);
 	}
 </script>
 

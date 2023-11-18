@@ -1,5 +1,5 @@
 <template>
-	<div class="confetti-container">
+	<div class="confetti-container" v-if="confetti">
 		<div class="confetti">
 			<i :style="{ '--speed': randInt(), '--bg': randBg() }" :class="randShape()" v-for="i in 100"></i>
 		</div>
@@ -7,6 +7,8 @@
 </template>
 
 <script setup>
+	const confetti = useState("confetti", (() => false))
+
 	function randPick(arr) {
 		return arr[Math.floor(Math.random() * arr.length)];
 	}
