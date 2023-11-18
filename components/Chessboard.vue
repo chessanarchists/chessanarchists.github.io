@@ -1,7 +1,7 @@
 <!-- This code handles the chessboard and the logic for puzzles -->
 
 <template>
-	<div class="flex flex-col justify-center items-center">
+	<div class="flex flex-col justify-center items-center space-y-2">
 		<div class="border-8 border-red-400">
 			<div id="chessboard" v-if="board" class="">
 				<div class="square" v-for="(row, colI) in board" :key="colI">
@@ -23,7 +23,10 @@
 								<faIcon
 									v-if="piece"
 									:icon="icon(piece)"
-									:class="[{ 'text-white': piece.slice(-1) == 'W' }, { 'text-yellow-200 scale-110': activePiece && activePiece.row === rowI && activePiece.col === colI }]"
+									:class="[
+										{ 'text-white': piece.slice(-1) == 'W' },
+										{ 'text-yellow-200 scale-110': activePiece && activePiece.row === rowI && activePiece.col === colI },
+									]"
 									class="text-4xl" />
 							</client-only>
 						</div>
@@ -31,19 +34,26 @@
 				</div>
 			</div>
 		</div>
-		<p class="min-h-[1.5em]">{{ status }}</p>
+		<div class="min-h-[2.3em]">
+			<p v-show="status.message" class="p-2 text-white rounded-2xl" :class="{ 'bg-primary': status.correct == false, 'bg-green-500': status.correct == true }">
+				{{ status.message }}
+			</p>
+		</div>
 		<input v-model="FEN" type="text" placeholder="build a position from FEN" />
 		<button @click="build(FEN)">Build</button>
 	</div>
 </template>
 
 <script setup>
-	const confetti = useState("confetti")
+	const confetti = useState("confetti");
 	const { puzzles } = usePuzzles();
 	const { convert } = useFEN();
 	let puzzle = puzzles.EnPassent;
 
-	let status = ref("");
+	let status = ref({
+		correct: false,
+		message: "",
+	});
 	let FEN = ref("");
 	function build(fen) {
 		board.value = convert(fen)[0].map((_, colIndex) => convert(fen).map((row) => row[colIndex]));
@@ -60,7 +70,7 @@
 	const from = ref(null);
 
 	function dragStart(colI, rowI, $event) {
-		emptyActive()
+		emptyActive();
 		if (board.value[colI][rowI]) {
 			activePiece.value = { col: colI, row: rowI };
 			from.value = { col: colI, row: rowI };
@@ -79,18 +89,17 @@
 
 	function drop(colI, rowI) {
 		if (!correctMove(notation(from.value.col, from.value.row), notation(colI, rowI))) {
-			status.value = "Wrong!";
-			emptyActive()
-			return
+			status.value.message = "Wrong!";
+			status.value.correct = false
+			emptyActive();
+			return;
 		}
 		board.value[colI][rowI] = draggedPiece.value;
 		board.value[from.value.col][from.value.row] = "";
-		correctGuess()
-		status.value = "Holy Hell!";
-		emptyActive()
+		correctGuess();
+		emptyActive();
 	}
 
-	
 	const files = "abcdefgh";
 	function notation(col, row) {
 		return `${files[col]}${8 - row}`;
@@ -103,39 +112,41 @@
 	};
 
 	function emptyActive() {
-		activePiece.value.col = null
-		activePiece.value.row = null
-		from.value = { col: null, row: null }
-		draggedPiece.value = null
+		activePiece.value.col = null;
+		activePiece.value.row = null;
+		from.value = { col: null, row: null };
+		draggedPiece.value = null;
 	}
 
 	function handleClick(col, row) {
-		if ((from.value && from.value.col == col && from.value.row == row)) {
-			return emptyActive()
+		if (from.value && from.value.col == col && from.value.row == row) {
+			return emptyActive();
 		}
 
 		if (activePiece.value.col && draggedPiece.value !== "") {
-			drop(col, row)
-			emptyActive()
-			return
+			drop(col, row);
+			emptyActive();
+			return;
 		}
-		draggedPiece.value = board.value[col][row]
+		draggedPiece.value = board.value[col][row];
 		from.value = { col: col, row: row };
 		activePiece.value.col = col;
 		activePiece.value.row = row;
 	}
 
 	function correctGuess() {
-		confetti.value = true
+		status.value.message = "Holy Hell!";
+		status.value.correct = true
+		confetti.value = true;
 		setTimeout(() => {
-			confetti.value = false
+			confetti.value = false;
 		}, 5000);
 	}
 </script>
 
 <style>
 	#chessboard {
-		background-image: url('~/assets/images/rick.jpg');
+		background-image: url("~/assets/images/rick.jpg");
 		background-size: cover;
 		display: flex;
 		flex-wrap: wrap;
