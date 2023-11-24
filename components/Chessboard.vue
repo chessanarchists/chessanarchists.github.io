@@ -48,7 +48,7 @@
 	const confetti = useState("confetti");
 	const { puzzles } = usePuzzles();
 	const { convert } = useFEN();
-	let puzzle = puzzles.EnPassent;
+	let puzzle = puzzles[1];
 
 	let status = ref({
 		correct: false,
