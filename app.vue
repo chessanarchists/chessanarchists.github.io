@@ -14,7 +14,7 @@ The NuxtPage is where the actual page is inserted, depending on that url the use
 				<img src="~/assets/images/martin.png" width="200" />
 			</div>
 		</div>
-
+		<MouseTrailer/>
 		<NuxtLayout>
 			<NuxtPage />
 		</NuxtLayout>

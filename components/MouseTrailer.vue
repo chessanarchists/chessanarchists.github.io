@@ -1,0 +1,78 @@
+<template>
+	<img :src="`/images/horsey-transparent${angry ? '-flames' : ''}.png`" id="pointer" @click="handleClick"/>
+</template>
+
+<script setup>
+    const pointer = ref(null);
+    const angry = ref(false)
+	onMounted(() => {
+		pointer.value = document.getElementById("pointer");
+
+		function animatePointer(e, interacting) {
+			const x = e.clientX/*  - pointer.value.offsetWidth / 2 */;
+			const y = e.clientY/*  - pointer.value.offsetHeight / 2 */;
+
+			const keyframes = {
+				transform: `translate(${x}px, ${y}px)`,
+			};
+			pointer.value.animate(keyframes, {
+				duration: angry.value ? 600 : 1700,
+				fill: "forwards",
+			});
+		}
+
+		window.onmousemove = (e) => {
+			const interactable = e.target.closest(".interact"),
+				interacting = interactable !== null;
+			animatePointer(e, interacting);
+		};
+        setInterval(() => {
+            if (stacks.value > 0) {
+                stacks.value --
+            } 
+            else {
+                angry.value = false
+                pointer.value.style.width = "40px"
+                pointer.value.style.height = "40px"
+            }
+        }, 3000);
+	});
+
+    const horseySize = computed(() => {
+        return angry.value ? 'scale-[1.3]' : 'scale-1'
+    });
+
+    const stacks = ref(0)
+    function handleClick() {
+        if (stacks.value < 1) {
+            stacks.value ++
+        }
+        else {
+            angry.value = true
+            pointer.value.style.width = "65px"
+            pointer.value.style.height = "65px"
+        }
+    }
+</script>
+
+<style lang="postcss">
+	body:hover #pointer {
+		opacity: 1;
+	}
+	#pointer {
+		left: 0;
+		top: 0;
+		width: 40px;
+		height: 40px;
+
+		z-index: 9999;
+		position: fixed;
+		pointer-events: auto;
+
+		opacity: 0;
+		transition: opacity 500ms ease;
+
+		border-radius: 30px;
+		background-image: "~/assets/images/horsey.png";
+	}
+</style>
