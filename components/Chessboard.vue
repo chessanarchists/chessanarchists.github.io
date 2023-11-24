@@ -48,7 +48,7 @@
 	const confetti = useState("confetti");
 	const { puzzles } = usePuzzles();
 	const { convert } = useFEN();
-	let puzzle = puzzles[1];
+	let puzzle = puzzles[(Math.floor(Math.random() * puzzles.length))];
 
 	let status = ref({
 		correct: false,
