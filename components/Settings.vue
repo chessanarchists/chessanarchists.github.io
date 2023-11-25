@@ -6,10 +6,11 @@
 				type="checkbox"
 				id="toggle"
 				name="toggle"
-				class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-accent border-4 appearance-none cursor-pointer transition-all duration-100 ease-in"
-                :class="{ 'translate-x-5': trailer }"
+				class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-primary border-white border-4 appearance-none cursor-pointer transition-all duration-100 ease-in"
+                :class="{ 'translate-x-5 bg-primary': trailer, 'bg-red-200': !trailer }"
 				@change="trailer = !trailer" />
-			<label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+			<label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer" 
+            :class="{'bg-primary': trailer, 'bg-red-200': !trailer}"></label>
 		</div>
 	</div>
 </template>

@@ -53,7 +53,7 @@ to be displayed on every page -->
 				{ transform: "rotate(0deg)", opacity: 1 },
 			],
 			{
-				duration: 1000,
+				duration: 700,
 				easing: "ease-in-out",
 				iterations: 1,
 				fill: "forwards",
