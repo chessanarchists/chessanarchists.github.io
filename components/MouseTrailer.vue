@@ -5,10 +5,12 @@
 <script setup>
     const pointer = ref(null);
     const angry = ref(false)
+	const moving = ref(true)
 	onMounted(() => {
 		pointer.value = document.getElementById("pointer");
 
 		function animatePointer(e, interacting) {
+			if (!moving) return
 			const x = e.clientX/*  - pointer.value.offsetWidth / 2 */;
 			const y = e.clientY/*  - pointer.value.offsetHeight / 2 */;
 

@@ -5,15 +5,22 @@ to be displayed on every page -->
 <template>
 	<div class="flex flex-col min-h-screen">
 		<!-- This is the Navbar -->
-		<div class="flex-grow">
-			<nav class="bg-primary text-white w-full flex items-center space-x-[1em] py-2 rounded-b-3xl shadow-lg">
-				<nuxt-link to="/"><img src="~/assets/images/horsey.png" width="50" class="ms-5 rounded hover:scale-110 transition-all" /></nuxt-link>
-				<div class="flex space-x-5" v-for="(page, index) in pages" :key="index">
-					<nuxt-link :to="page.url" class="p-1 bg-[#ED1824] rounded-lg
-					hover:bg-indigo-900 hover:scale-110 transition-all py-0.5 shadow-md">
-						<p class="md:mb-1">{{ page.title }}</p>
-					</nuxt-link>
+		<div class="flex-grow relative">
+			<nav class="bg-primary text-white w-full flex items-center space-x-[1em] py-2 rounded-b-3xl shadow-lg md:static fixed bottom-0 z-10">
+				<div class="flex items-center space-x-[1em] flex-grow">
+					<nuxt-link to="/"><img src="~/assets/images/horsey.png" width="50" height="50" class="ms-5 rounded hover:scale-110 transition-all pr-2" /></nuxt-link>
+	
+					<div class="flex space-x-5" v-for="(page, index) in pages" :key="index">
+						<nuxt-link :to="page.url" class="p-1 bg-[#ED1824] rounded-lg
+						hover:bg-indigo-900 hover:scale-110 transition-all py-0.5 shadow-md">
+							<p class="md:mb-1">{{ page.title }}</p>
+						</nuxt-link>
+					</div>
 				</div>
+				<!-- <div class="flex space-x-[2em] justify-end px-10">
+					<button>hi</button>
+					<button>hi</button>
+				</div> -->
 			</nav>
 			
 			<!-- Here, the content of the current page is automatically inserted -->
