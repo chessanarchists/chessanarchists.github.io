@@ -8,7 +8,7 @@
 				name="toggle"
 				class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-primary border-white border-4 appearance-none cursor-pointer transition-all duration-100 ease-in"
                 :class="{ 'translate-x-5 bg-primary': trailer, 'bg-red-200': !trailer }"
-				@change="trailer = !trailer" />
+				@change="toggleTrailer" />
 			<label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer" 
             :class="{'bg-primary': trailer, 'bg-red-200': !trailer}"></label>
 		</div>
@@ -16,9 +16,20 @@
 </template>
 
 <script setup>
+    import { getData, setData } from 'nuxt-storage/local-storage';
+
 	const settings = useState("settings", () => false);
 
     const trailer = useState('trailer', (() => true))
+
+    onMounted(() => {
+        trailer.value = getData('mouse-trailer') == null ? true : getData('mouse-trailer')
+    })
+
+    function toggleTrailer() {
+        trailer.value = !trailer.value
+        setData('mouse-trailer', trailer.value)
+    }
 </script>
 
 <style lang="postcss" scoped>
