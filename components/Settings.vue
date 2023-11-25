@@ -1,35 +1,43 @@
 <template>
-	<div id="settings" :class="{ visible: settings }" class="p-10 text-accent bottom-0 origin-bottom align-bottom">
-        <h1 class="text-3xl mb-5">Settings</h1>
-		<p>Mouse Trailer Horsey</p>
-		<div class="relative inline-block w-10 align-middle select-none">
-			<input
-				type="checkbox"
-				id="toggle"
-				name="toggle"
-				class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-primary border-white border-4 appearance-none cursor-pointer transition-all duration-100 ease-in"
-                :class="{ 'translate-x-5 bg-primary': trailer, 'bg-red-200': !trailer }"
-				@change="toggleTrailer" />
-			<label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer" 
-            :class="{'bg-primary': trailer, 'bg-red-200': !trailer}"></label>
-		</div>
+	<div id="settings" :class="{ visible: settings }" class="p-10 text-accent bottom-0 origin-bottom align-bottom space-y-5">
+        <h1 class="text-3xl mb-2">Settings</h1>
+        <div>
+            <p>Mouse Trailer Horsey</p>
+            <div class="relative inline-block w-10 align-middle select-none">
+                <input
+                    type="checkbox"
+                    id="toggle"
+                    name="toggle"
+                    class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-primary border-white border-4 appearance-none cursor-pointer transition-all duration-100 ease-in"
+                    :class="{ 'translate-x-5 bg-primary': trailer, 'bg-red-200': !trailer }"
+                    @change="toggleTrailer" />
+                <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer" 
+                :class="{'bg-primary': trailer, 'bg-red-200': !trailer}"></label>
+            </div>
+        </div>
+        <div>
+            <p>Reset to default</p>
+            <button @click="clearSettings()">huh</button>
+        </div>
 	</div>
 </template>
 
 <script setup>
-    import { getData, setData } from 'nuxt-storage/local-storage';
-
 	const settings = useState("settings", () => false);
 
     const trailer = useState('trailer', (() => true))
 
+    function clearSettings() {
+        localStorage.clear()
+    }
+
     onMounted(() => {
-        trailer.value = getData('mouse-trailer') == null ? true : getData('mouse-trailer')
+        trailer.value = localStorage.getItem('mouse-trailer') == null ? true : JSON.parse(localStorage.getItem('mouse-trailer'))
     })
 
     function toggleTrailer() {
         trailer.value = !trailer.value
-        setData('mouse-trailer', trailer.value, {expiry: "36525", expiryUnit: "d"})
+        localStorage.setItem('mouse-trailer', trailer.value)
     }
 </script>
 
