@@ -29,7 +29,7 @@
 
     function toggleTrailer() {
         trailer.value = !trailer.value
-        setData('mouse-trailer', trailer.value)
+        setData('mouse-trailer', trailer.value, {expiry: "36525", expiryUnit: "d"})
     }
 </script>
 

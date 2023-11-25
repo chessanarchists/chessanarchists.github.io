@@ -34,13 +34,21 @@
 				</div>
 			</div>
 		</div>
-		<div class="min-h-[2.3em]">
+		<div class="min-h-[2.5em]">
 			<p v-show="status.message" class="p-2 text-white rounded-2xl" :class="{ 'bg-primary': status.correct == false, 'bg-green-500': status.correct == true }">
 				{{ status.message }}
 			</p>
 		</div>
-		<input v-model="FEN" type="text" placeholder="build a position from FEN" />
-		<button @click="build(FEN)">Build</button>
+		<div class="min-h-[3em]">
+			<button class="bg-accent text-white p-1 rounded-md shadow-xl hover:scale-110 hover:bg-blue-950 transition-all duration-100"
+				v-if="status.correct" @click="nextPuzzle">
+				Try another one
+			</button>
+		</div>
+		<div class="invisible">
+			<input v-model="FEN" type="text" placeholder="build a position from FEN" />
+			<button @click="build(FEN)">Build</button>
+		</div>
 	</div>
 </template>
 
@@ -48,7 +56,7 @@
 	const confetti = useState("confetti");
 	const { puzzles } = usePuzzles();
 	const { convert } = useFEN();
-	let puzzle = puzzles[(Math.floor(Math.random() * puzzles.length))];
+	let puzzle = ref(puzzles[Math.floor(Math.random() * puzzles.length)]);
 
 	let status = ref({
 		correct: false,
@@ -59,7 +67,7 @@
 		board.value = convert(fen)[0].map((_, colIndex) => convert(fen).map((row) => row[colIndex]));
 	}
 
-	const board = ref(puzzle.position[0].map((_, colIndex) => puzzle.position.map((row) => row[colIndex])));
+	const board = ref(puzzle.value.position[0].map((_, colIndex) => puzzle.value.position.map((row) => row[colIndex])));
 
 	const icon = (piece) => {
 		return ["far", `chess-${piece.toLowerCase().substring(0, piece.length - 1)}`];
@@ -90,7 +98,7 @@
 	function drop(colI, rowI) {
 		if (!correctMove(notation(from.value.col, from.value.row), notation(colI, rowI))) {
 			status.value.message = "Wrong!";
-			status.value.correct = false
+			status.value.correct = false;
 			emptyActive();
 			return;
 		}
@@ -108,7 +116,7 @@
 	const activePiece = ref({ col: null, row: null });
 
 	const correctMove = (from, to) => {
-		return puzzle.solution[0] == from && puzzle.solution[1] == to;
+		return puzzle.value.solution[0] == from && puzzle.value.solution[1] == to;
 	};
 
 	function emptyActive() {
@@ -136,11 +144,21 @@
 
 	function correctGuess() {
 		status.value.message = "Holy Hell!";
-		status.value.correct = true
+		status.value.correct = true;
 		confetti.value = true;
 		setTimeout(() => {
 			confetti.value = false;
 		}, 5000);
+	}
+
+	function nextPuzzle() {
+		status.value.message = "";
+		status.value.correct = false;
+		let newPuzzle = puzzles[Math.floor(Math.random() * puzzles.length)];
+		if (newPuzzle != puzzle.value) {
+			return puzzle.value = newPuzzle
+		}
+		nextPuzzle()
 	}
 </script>
 

@@ -8,23 +8,23 @@ The NuxtPage is where the actual page is inserted, depending on that url the use
 		<title>AnarchyChess</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link href="https://fonts.cdnfonts.com/css/youtube-sans" rel="stylesheet" />
+		<div class="-top-4" id="top"></div>
 
-		<div v-if="loading" class="fixed inset-0 flex items-center justify-center">
+		<div id="loading" v-if="loading" class="fixed inset-0 flex items-center justify-center">
 			<div class="animate-spin">
 				<img src="~/assets/images/martin.png" width="200" />
 			</div>
 		</div>
-		<MouseTrailer/>
+		<MouseTrailer />
 		<NuxtLayout>
 			<NuxtPage />
 		</NuxtLayout>
-		<Settings/>
+		<Settings />
 	</div>
 </template>
 
 <script setup lang="ts">
 	const nuxtApp = useNuxtApp();
-
 	useHead({
 		title: "AnarchyChess",
 		meta: [
@@ -76,6 +76,7 @@ The NuxtPage is where the actual page is inserted, depending on that url the use
 
 	const loading = ref(false);
 	nuxtApp.hook("page:start", () => {
+		window.scrollTo(0, 0)
 		loading.value = true;
 		setTimeout(() => {
 			loading.value = false;
