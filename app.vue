@@ -18,6 +18,7 @@ The NuxtPage is where the actual page is inserted, depending on that url the use
 		<NuxtLayout>
 			<NuxtPage />
 		</NuxtLayout>
+		<Settings/>
 	</div>
 </template>
 
@@ -64,7 +65,7 @@ The NuxtPage is where the actual page is inserted, depending on that url the use
 			},
 			{
 				name: "keywords",
-				content: "chess, anarchychess, en passent, holy hell, official",
+				content: "chess, anarchychess, en passant, holy hell, official, chessanarchy, chessanarchists, reddit",
 			},
 			{
 				name: "robots",

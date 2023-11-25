@@ -20,7 +20,7 @@ to be displayed on every page -->
 				</div>
 				<div class="flex space-x-[2em] justify-end px-10">
 					<client-only>
-						<faIcon icon="gear"></faIcon>
+						<faIcon icon="gear" @click="toggleSettings" class="cursor-pointer"></faIcon>
 					</client-only>
 				</div>
 			</nav>
@@ -38,6 +38,10 @@ to be displayed on every page -->
 </template>
 
 <script setup>
+	const settings = useState('settings', (() => false))
+	function toggleSettings() {
+		settings.value = !settings.value
+	}
 	const pages = [
 		{
 			title: "Puzzles",
