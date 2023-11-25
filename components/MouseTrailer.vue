@@ -1,18 +1,28 @@
 <template>
-	<img :src="`/images/horsey-transparent${angry ? '-flames' : ''}.png`" id="pointer" @click="handleClick"/>
+	<img :src="`/images/horsey-transparent${angry ? '-flames' : ''}.png`" id="pointer" @click="handleClick" />
 </template>
 
 <script setup>
-    const pointer = ref(null);
-    const angry = ref(false)
-	const moving = ref(true)
+	const pointer = ref(null);
+	const angry = ref(false);
+	const on = useState("trailer", () => true);
 	onMounted(() => {
 		pointer.value = document.getElementById("pointer");
 
 		function animatePointer(e, interacting) {
-			if (!moving) return
-			const x = e.clientX/*  - pointer.value.offsetWidth / 2 */;
-			const y = e.clientY/*  - pointer.value.offsetHeight / 2 */;
+			if (!on.value) {
+				return pointer.value.animate(
+					{
+						transform: "translate(-100px, -100px)",
+					},
+					{
+						duration: 500,
+						fill: "forwards",
+					}
+				);
+			}
+			const x = e.clientX; /*  - pointer.value.offsetWidth / 2 */
+			const y = e.clientY; /*  - pointer.value.offsetHeight / 2 */
 
 			const keyframes = {
 				transform: `translate(${x}px, ${y}px)`,
@@ -28,33 +38,31 @@
 				interacting = interactable !== null;
 			animatePointer(e, interacting);
 		};
-        setInterval(() => {
-            if (stacks.value > 0) {
-                stacks.value --
-            } 
-            else {
-                angry.value = false
-                pointer.value.style.width = "40px"
-                pointer.value.style.height = "40px"
-            }
-        }, 3000);
+		setInterval(() => {
+			if (stacks.value > 0) {
+				stacks.value--;
+			} else {
+				angry.value = false;
+				pointer.value.style.width = "40px";
+				pointer.value.style.height = "40px";
+			}
+		}, 3000);
 	});
 
-    const horseySize = computed(() => {
-        return angry.value ? 'scale-[1.3]' : 'scale-1'
-    });
+	const horseySize = computed(() => {
+		return angry.value ? "scale-[1.3]" : "scale-1";
+	});
 
-    const stacks = ref(0)
-    function handleClick() {
-        if (stacks.value < 1) {
-            stacks.value ++
-        }
-        else {
-            angry.value = true
-            pointer.value.style.width = "65px"
-            pointer.value.style.height = "65px"
-        }
-    }
+	const stacks = ref(0);
+	function handleClick() {
+		if (stacks.value < 1) {
+			stacks.value++;
+		} else {
+			angry.value = true;
+			pointer.value.style.width = "65px";
+			pointer.value.style.height = "65px";
+		}
+	}
 </script>
 
 <style lang="postcss">

@@ -53,10 +53,10 @@ to be displayed on every page -->
 				{ transform: "rotate(0deg)", opacity: 1 },
 			],
 			{
-				duration: 1000, // Animation duration in milliseconds
-				easing: "ease-in-out", // Easing function
-				iterations: 1, // Number of times the animation should repeat
-				fill: "forwards", // The element will retain the styles from the last keyframe after the animation
+				duration: 1000,
+				easing: "ease-in-out",
+				iterations: 2,
+				fill: "forwards",
 			}
 		);
 	}
