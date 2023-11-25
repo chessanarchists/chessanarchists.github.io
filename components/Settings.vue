@@ -21,7 +21,7 @@
         background-color: #f3a5a5;
         border-radius: 30px;
 
-        transition: top 1s ease-out;
+        transition: top 0.5s ease-out;
     }
     .visible {
         top: 50% !important;

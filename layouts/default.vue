@@ -20,7 +20,7 @@ to be displayed on every page -->
 				</div>
 				<div class="flex space-x-[2em] justify-end px-10">
 					<client-only>
-						<faIcon icon="gear" @click="toggleSettings" class="cursor-pointer"></faIcon>
+						<faIcon id="settings-btn" :icon="icon" @click="toggleSettings" class="cursor-pointer w-4 h-4"></faIcon>
 					</client-only>
 				</div>
 			</nav>
@@ -38,9 +38,27 @@ to be displayed on every page -->
 </template>
 
 <script setup>
-	const settings = useState('settings', (() => false))
+	const settings = useState("settings", () => false);
+	const icon = ref("gear")
+
 	function toggleSettings() {
-		settings.value = !settings.value
+		settings.value = !settings.value;
+		setTimeout(() => {
+			icon.value = icon.value	== "x" ? "gear" : "x"
+		}, 500);
+		document.getElementById("settings-btn").animate(
+			[
+				{ transform: "rotate(0deg)", opacity: 1 },
+				{ transform: "rotate(360deg)", opacity: 0 },
+				{ transform: "rotate(0deg)", opacity: 1 },
+			],
+			{
+				duration: 1000, // Animation duration in milliseconds
+				easing: "ease-in-out", // Easing function
+				iterations: 1, // Number of times the animation should repeat
+				fill: "forwards", // The element will retain the styles from the last keyframe after the animation
+			}
+		);
 	}
 	const pages = [
 		{
@@ -62,7 +80,7 @@ to be displayed on every page -->
 	];
 
 	function scrollUp() {
-		console.log("hi")
+		console.log("hi");
 		document.body.scrollTop = 0;
 		document.documentElement.scrollTop = 0;
 	}
