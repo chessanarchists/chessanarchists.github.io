@@ -1,5 +1,6 @@
 <template>
 	<div id="settings" :class="{ visible: settings }" class="p-10 text-accent bottom-0 origin-bottom align-bottom">
+        <h1 class="text-3xl mb-5">Settings</h1>
 		<p>Mouse Trailer Horsey</p>
 		<div class="relative inline-block w-10 align-middle select-none">
 			<input
