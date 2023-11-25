@@ -67,10 +67,6 @@ The NuxtPage is where the actual page is inserted, depending on that url the use
 				name: "keywords",
 				content: "chess, anarchychess, en passant, holy hell, official, chessanarchy, chessanarchists, reddit",
 			},
-			{
-				name: "robots",
-				content: "index, follow, noarchive",
-			},
 		],
 	});
 
