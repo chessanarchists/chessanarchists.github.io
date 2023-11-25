@@ -55,7 +55,7 @@ to be displayed on every page -->
 			{
 				duration: 1000,
 				easing: "ease-in-out",
-				iterations: 2,
+				iterations: 1,
 				fill: "forwards",
 			}
 		);
