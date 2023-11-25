@@ -24,8 +24,6 @@ The NuxtPage is where the actual page is inserted, depending on that url the use
 </template>
 
 <script setup>
-	import { getData } from 'nuxt-storage/local-storage';
-
 	const nuxtApp = useNuxtApp();
 	useHead({
 		title: "AnarchyChess",
