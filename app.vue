@@ -26,7 +26,7 @@ The NuxtPage is where the actual page is inserted, depending on that url the use
 <script setup>
 	const nuxtApp = useNuxtApp();
 	useHead({
-		title: "AnarchyChess",
+		title: "Anarchy Chess",
 		meta: [
 			{
 				name: "description",
@@ -65,7 +65,7 @@ The NuxtPage is where the actual page is inserted, depending on that url the use
 			},
 			{
 				name: "keywords",
-				content: "chess, anarchychess, en passant, holy hell, official, chessanarchy, chessanarchists, reddit",
+				content: "chess, anarchy, anarchychess, en passant, holy hell, official, chessanarchy, chessanarchists, reddit",
 			},
 		],
 	});
