@@ -9,7 +9,7 @@ to be displayed on every page -->
 			<nav class="bg-primary text-white w-full flex items-center space-x-[1em] py-2 md:rounded-b-3xl shadow-lg md:static fixed bottom-0 z-10">
 				<div class="flex items-center space-x-[1em] flex-grow">
 					<nuxt-link to="/"
-						><img src="~/assets/images/horsey.png" width="50" height="50" class="ms-5 rounded hover:scale-110 transition-all pr-2"
+						><img src="~/assets/images/horsey.png" width="50" height="50" class="ms-5 rounded hover:scale-110 transition-all pr-2" draggable="false"
 					/></nuxt-link>
 
 					<div class="flex space-x-5" v-for="(page, index) in pages" :key="index">

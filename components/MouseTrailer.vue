@@ -1,5 +1,5 @@
 <template>
-	<img :src="`/images/horsey-transparent${angry ? '-flames' : ''}.png`" id="pointer" @click="handleClick" />
+	<img :src="`/images/horsey-transparent${angry ? '-flames' : ''}.png`" id="pointer" @click="handleClick" draggable="false"/>
 </template>
 
 <script setup>
