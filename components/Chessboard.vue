@@ -2,7 +2,7 @@
 
 <template>
 	<div class="flex flex-col justify-center items-center space-y-2">
-		<div class="border-8 border-red-400">
+		<div class="border-8 border-red-950">
 			<div id="chessboard" v-if="board" class="">
 				<div class="square" v-for="(row, colI) in board" :key="colI">
 					<div

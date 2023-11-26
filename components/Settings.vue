@@ -16,8 +16,9 @@
             </div>
         </div>
         <div>
-            <p>Reset to default</p>
-            <button @click="clearSettings()">huh</button>
+            <button @click="clearSettings()" class="bg-accent text-white p-1 rounded-md hover:bg-indigo-950 hover:scale-105">
+                Reset preferences to default
+            </button>
         </div>
 	</div>
 </template>
@@ -29,6 +30,7 @@
 
     function clearSettings() {
         localStorage.clear()
+        settings.value = false
     }
 
     onMounted(() => {
