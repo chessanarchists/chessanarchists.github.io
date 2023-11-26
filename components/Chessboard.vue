@@ -67,7 +67,11 @@
 		board.value = convert(fen)[0].map((_, colIndex) => convert(fen).map((row) => row[colIndex]));
 	}
 
-	const board = ref(puzzle.value.position[0].map((_, colIndex) => puzzle.value.position.map((row) => row[colIndex])));
+	function transpose(arr) {
+		return arr[0].map((_, colIndex) => arr.map((row) => row[colIndex]))
+	}
+
+	const board = ref(transpose(puzzle.value.position));
 
 	const icon = (piece) => {
 		return ["far", `chess-${piece.toLowerCase().substring(0, piece.length - 1)}`];
@@ -156,7 +160,9 @@
 		status.value.correct = false;
 		let newPuzzle = puzzles[Math.floor(Math.random() * puzzles.length)];
 		if (newPuzzle != puzzle.value) {
-			return puzzle.value = newPuzzle
+			puzzle.value = newPuzzle
+			board.value = transpose(puzzle.value.position)
+			return 
 		}
 		nextPuzzle()
 	}
