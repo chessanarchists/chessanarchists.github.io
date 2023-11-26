@@ -41,8 +41,7 @@ to be displayed on every page -->
 	const settings = useState("settings", () => false);
 	const icon = ref("gear")
 
-	function toggleSettings() {
-		settings.value = !settings.value;
+	watch(settings, (newValue, oldValue) => {
 		setTimeout(() => {
 			icon.value = icon.value	== "x" ? "gear" : "x"
 		}, 500);
@@ -59,6 +58,10 @@ to be displayed on every page -->
 				fill: "forwards",
 			}
 		);
+    });
+
+	function toggleSettings() {
+		settings.value = !settings.value;
 	}
 	const pages = [
 		{

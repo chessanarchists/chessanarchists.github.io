@@ -1,5 +1,5 @@
 <template>
-	<div id="settings" :class="{ visible: settings }" class="p-10 text-accent bottom-0 origin-bottom align-bottom space-y-5">
+	<div id="settings" :class="{ visible: settings }" class="p-10 text-accent bottom-0 origin-bottom align-bottom space-y-5" >
         <h1 class="text-3xl mb-2">Settings</h1>
         <div>
             <p>Mouse Trailer Horsey</p>

@@ -4,7 +4,7 @@ There is also the loading spinner, it's styling and the page font.
 The NuxtPage is where the actual page is inserted, depending on that url the user is on, from the pages directory -->
 
 <template>
-	<div class="h-screen overflow-x-hidden bg-background mb-12 md:mb-0">
+	<div class="h-screen overflow-x-hidden bg-background mb-12 md:mb-0" @click="bodyClick">
 		<title>AnarchyChess</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link href="https://fonts.cdnfonts.com/css/youtube-sans" rel="stylesheet" />
@@ -78,6 +78,19 @@ The NuxtPage is where the actual page is inserted, depending on that url the use
 			loading.value = false;
 		}, 700);
 	});
+
+	const settingsIsOpen = useState("settings", () => false);
+	function bodyClick({target}) {
+		// close settings on clicking away
+		const settings = document.getElementById('settings'),
+		settings_btn = document.getElementById('settings-btn')
+		if (
+			!(['settings', 'settings-btn'].includes(target.id) ||
+			settings.contains(target) || settings_btn.contains(target))
+			) {
+				settingsIsOpen.value = false
+		}
+	}
 </script>
 
 <style>
