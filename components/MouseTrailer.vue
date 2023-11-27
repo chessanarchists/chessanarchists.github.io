@@ -49,9 +49,9 @@
 	});
 
 	function swapHorsey() {
-		pointer.value.src = `/images/horsey-transparent${angry.value ? '-flames' : ''}.png`
-		pointer.value.style.width = `${angry ? '65px' : '40px'};`
-		pointer.value.style.height = `${angry ? '65px' : '40px'};`
+		pointer.value.src = angry.value ? "/images/horsey-transparent-flames.png" : "/images/horsey-transparent.png"
+		pointer.value.style.width = `${angry.value ? '65px' : '40px'};`
+		pointer.value.style.height = `${angry.value ? '65px' : '40px'};`
 	}
 
 	const stacks = ref(0);
