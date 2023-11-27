@@ -54,7 +54,7 @@
 	});
 
 	const horseyImg = computed(() => {
-		return `/images/horsey-transparent${angry ? '-flames' : ''}.png`
+		return `/images/horsey-transparent${angry.value ? '-flames' : ''}.png`
 	})
 
 	const stacks = ref(0);
