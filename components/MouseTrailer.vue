@@ -49,7 +49,7 @@
 	});
 
 	function swapHorsey() {
-		pointer.value.src = angry.value ? "/images/horsey-transparent-flames.png" : "/images/horsey-transparent.png"
+		pointer.value.src = angry.value ? "/images/horsey-transparent-flames.webp" : "/images/horsey-transparent.webp"
 		pointer.value.style.width = `${angry.value ? '65px' : '40px'};`
 		pointer.value.style.height = `${angry.value ? '65px' : '40px'};`
 	}
