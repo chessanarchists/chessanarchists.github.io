@@ -1,5 +1,5 @@
 <template>
-	<img :src="horseyImg" id="pointer" @click="handleClick" draggable="false"/>
+	<img :src="horseyImg" id="pointer" @click="handleClick" draggable="false" :class="horseySize"/>
 </template>
 
 <script setup>
@@ -43,8 +43,8 @@
 				stacks.value--;
 			} else {
 				angry.value = false;
-				pointer.value.style.width = "40px";
-				pointer.value.style.height = "40px";
+				/* pointer.value.style.width = "40px";
+				pointer.value.style.height = "40px"; */
 			}
 		}, 3000);
 	});
@@ -63,8 +63,8 @@
 			stacks.value++;
 		} else {
 			angry.value = true;
-			pointer.value.style.width = "65px";
-			pointer.value.style.height = "65px";
+			/* pointer.value.style.width = "65px";
+			pointer.value.style.height = "65px"; */
 		}
 	}
 </script>
