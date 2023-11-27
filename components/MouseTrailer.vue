@@ -1,5 +1,5 @@
 <template>
-	<img :src="`/images/horsey-transparent${angry ? '-flames' : ''}.png`" id="pointer" @click="handleClick" draggable="false"/>
+	<img :src="horseyImg" id="pointer" @click="handleClick" draggable="false"/>
 </template>
 
 <script setup>
@@ -52,6 +52,10 @@
 	const horseySize = computed(() => {
 		return angry.value ? "scale-[1.3]" : "scale-1";
 	});
+
+	const horseyImg = computed(() => {
+		return `/images/horsey-transparent${angry ? '-flames' : ''}.png`
+	})
 
 	const stacks = ref(0);
 	function handleClick() {
