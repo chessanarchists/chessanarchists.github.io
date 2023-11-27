@@ -1,5 +1,6 @@
 <template>
-	<img :src="horseyImg" id="pointer" @click="handleClick" draggable="false" :class="horseySize"/>
+	<img :src="horseyImg" id="pointer" @click="handleClick" draggable="false"
+	:style="`width: ${angry ? '65px' : '40px'}; height: ${angry ? '65px' : '40px'};`"/>
 </template>
 
 <script setup>
