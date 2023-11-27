@@ -1,5 +1,5 @@
 <template>
-	<img src="/images/horsey-transparent.webp" id="pointer" @click="handleClick" draggable="false"/>
+	<img src="/images/horsey-transparent.webp" id="pointer" @click="handleClick" draggable="false" />
 </template>
 
 <script setup>
@@ -43,15 +43,15 @@
 				stacks.value--;
 			} else {
 				angry.value = false;
-				swapHorsey()
+				swapHorsey();
 			}
 		}, 3000);
 	});
 
 	function swapHorsey() {
-		pointer.value.src = angry.value ? "/images/horsey-transparent-flames.webp" : "/images/horsey-transparent.webp"
-		pointer.value.style.width = `${angry.value ? '65px' : '40px'};`
-		pointer.value.style.height = `${angry.value ? '65px' : '40px'};`
+		pointer.value.src = angry.value ? "/images/horsey-transparent-flames.webp" : "/images/horsey-transparent.webp";
+		pointer.value.style.width = angry.value ? "65px" : "40px";
+		pointer.value.style.height = angry.value ? "65px" : "40px";
 	}
 
 	const stacks = ref(0);
@@ -60,7 +60,7 @@
 			stacks.value++;
 		} else {
 			angry.value = true;
-			swapHorsey()
+			swapHorsey();
 		}
 	}
 </script>
