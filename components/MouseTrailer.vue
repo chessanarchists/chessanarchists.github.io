@@ -1,6 +1,5 @@
 <template>
-	<img :src="`/images/horsey-transparent${angry ? '-flames' : ''}.png`" id="pointer" @click="handleClick" draggable="false"
-	:style="`width: ${angry ? '65px' : '40px'}; height: ${angry ? '65px' : '40px'};`"/>
+	<img src="`/images/horsey-transparent.png`" id="pointer" @click="handleClick" draggable="false"/>
 </template>
 
 <script setup>
@@ -44,19 +43,16 @@
 				stacks.value--;
 			} else {
 				angry.value = false;
-				/* pointer.value.style.width = "40px";
-				pointer.value.style.height = "40px"; */
+				swapHorsey()
 			}
 		}, 3000);
 	});
 
-	const horseySize = computed(() => {
-		return angry.value ? "scale-[1.3]" : "scale-1";
-	});
-
-	const horseyImg = computed(() => {
-		return `/images/horsey-transparent${angry.value ? '-flames' : ''}.png`
-	})
+	function swapHorsey() {
+		pointer.value.src = `/images/horsey-transparent${angry.value ? '-flames' : ''}.png`
+		pointer.value.style.width = `${angry ? '65px' : '40px'};`
+		pointer.value.style.height = `${angry ? '65px' : '40px'};`
+	}
 
 	const stacks = ref(0);
 	function handleClick() {
@@ -64,8 +60,7 @@
 			stacks.value++;
 		} else {
 			angry.value = true;
-			/* pointer.value.style.width = "65px";
-			pointer.value.style.height = "65px"; */
+			swapHorsey()
 		}
 	}
 </script>
