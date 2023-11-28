@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: youtube sans;
+    font-style: normal;
+    font-weight: 500;
+    src: local("YouTube Sans"), url('/fonts/YouTubeSansSemibold.woff') format("woff");
+}
+
+body {
+	font-family: "YouTube Sans", sans-serif;
+	font-display: swap;
+}

@@ -7,9 +7,8 @@ The NuxtPage is where the actual page is inserted, depending on that url the use
 	<div class="select-none h-screen overflow-x-hidden bg-background mb-12 md:mb-0" @click="bodyClick">
 		<title>AnarchyChess</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link href="https://fonts.cdnfonts.com/css/youtube-sans" rel="stylesheet" />
+		
 		<div class="-top-4" id="top"></div>
-
 		<div id="loading" v-if="loading" class="fixed inset-0 flex items-center justify-center">
 			<div class="animate-spin">
 				<img src="~/assets/images/martin.png" width="200" draggable="false"/>
@@ -94,11 +93,7 @@ The NuxtPage is where the actual page is inserted, depending on that url the use
 </script>
 
 <style>
-	body {
-		font-family: "YouTube Sans", sans-serif;
-		font-family: "YouTube Sans Dark", sans-serif;
-		font-display: swap;
-	}
+	
 	.page-enter-active,
 	.page-leave-active {
 		transition: all 0.4s;
