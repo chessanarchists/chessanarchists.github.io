@@ -5,7 +5,7 @@ from the same-named .md file in the 'content' folder. We also import the stylesh
 		<div class="ms-4">
 			<div class="flex flex-wrap">
 				<span>
-					<p>Count En Passants played</p>
+					<p>[NOT DONE YET]  Count En Passants played</p>
 					<input type="text" placeholder="Enter chess.c*m username" v-model="user" class="rounded-lg py-2 bg-red-200" />
 				</span>
 				<span>
