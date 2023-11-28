@@ -11,7 +11,7 @@ export function useChessDotCm() {
 
 					let landingRank = game.side == "white" ? Number(rank) - 1 : Number(rank) + 1;
 					const nexRex = new RegExp(`^[^\\s]+ [a-z]*x${file}*${landingRank}$`);
-					nextMove = game.pgn[i + 1];
+					const nextMove = game.pgn[i + 1];
 
 					if (nextMove && nextMove.match(nexRex)) {
 						passantCount++;
@@ -26,7 +26,6 @@ export function useChessDotCm() {
 		let allGames = [];
 		await fetchArchives(user).then(async (archives) => {
 			for (let [i, archive] of archives.entries()) {
-				console.log(i, months);
 				if (months && months == 1 + i) return;
 
 				for (let game of await accumulateGames(archive, user)) {

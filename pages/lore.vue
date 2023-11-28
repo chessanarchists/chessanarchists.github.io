@@ -2,11 +2,13 @@
 from the same-named .md file in the 'content' folder. We also import the stylesheet that applies styling to the text -->
 <template>
 	<div class="mt-2">
-		<div class="ms-4">
+		<div class="ms-4 space-y-2">
 			<div class="flex flex-wrap">
 				<span>
-					<p>[NOT DONE YET]  Count En Passants played</p>
-					<input type="text" placeholder="Enter chess.c*m username" v-model="user" class="rounded-lg py-2 bg-red-200" />
+					<p>Count En Passants played</p>
+					<input type="text" placeholder="Enter chess.c*m username" v-model="user" class="rounded-lg py-2 bg-red-200 text-center" /> 
+					<!-- <span><button></button></span> -->
+					<span v-if="popup" class="absolute z-50 bg-accent text-white px-2 py-1 rounded-xl -translate-x-[185px] translate-y-12">enter your username</span>
 				</span>
 				<span>
 					<p>within the last ... months</p>
@@ -21,8 +23,8 @@ from the same-named .md file in the 'content' folder. We also import the stylesh
 					</div>
 				</span>
 			</div>
-			<button @click="countPassants">Count</button>
-			<p>Count: {{ count }}</p>
+			<button @click="countPassants" id="trigger" class="bg-accent text-white rounded-lg px-2 py-1 text-center">Count</button>
+			<p class="bg-red-300 p-4 rounded-3xl text-center">Result: {{ count }}</p>
 		</div>
 
 		<main>
@@ -47,13 +49,18 @@ from the same-named .md file in the 'content' folder. We also import the stylesh
 	});
 
 	const { countEnPassant } = useChessDotCm()
+	const popup = useState('popup', (() => false))
 	
 	const monthRange = ref(2)
 	const user = ref("")
-	const count = ref()
+	const count = ref("")
 
 	function countPassants() {
-		count.value = countEnPassant(user.value, count.value)
+		if (!user.value) return popup.value = true
+		count.value = "Analyzing..."
+		countEnPassant(user.value, monthRange.value).then((passants) => 
+			count.value = `${passants} en passants played in the last ${monthRange.value} months`
+		)
 	}
 </script>
 

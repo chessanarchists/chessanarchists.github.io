@@ -78,8 +78,14 @@ The NuxtPage is where the actual page is inserted, depending on that url the use
 		}, 700);
 	});
 
+	const popup = useState('popup', (() => false))
 	const settingsIsOpen = useState("settings", () => false);
+
 	function bodyClick({target}) {
+		// close hint popups
+		if (!(target.id == "trigger")) {
+			popup.value = false
+		}
 		// close settings on clicking away
 		const settings = document.getElementById('settings'),
 		settings_btn = document.getElementById('settings-btn')
