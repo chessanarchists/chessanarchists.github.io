@@ -6,7 +6,7 @@ from the same-named .md file in the 'content' folder. We also import the stylesh
 			<div class="flex flex-wrap">
 				<span>
 					<p>Count En Passants played</p>
-					<input type="text" placeholder="Enter chess.c*m username" class="rounded-lg py-2 bg-red-200" />
+					<input type="text" placeholder="Enter chess.c*m username" v-model="user" class="rounded-lg py-2 bg-red-200" />
 				</span>
 				<span>
 					<p>within the last ... months</p>
@@ -21,6 +21,8 @@ from the same-named .md file in the 'content' folder. We also import the stylesh
 					</div>
 				</span>
 			</div>
+			<button @click="countPassants">Count</button>
+			<p>Count: {{ count }}</p>
 		</div>
 
 		<main>
@@ -44,7 +46,15 @@ from the same-named .md file in the 'content' folder. We also import the stylesh
 		],
 	});
 
+	const { countEnPassant } = useChessDotCm()
+	
 	const monthRange = ref(2)
+	const user = ref("")
+	const count = ref()
+
+	function countPassants() {
+		count.value = countEnPassant(user.value, count.value)
+	}
 </script>
 
 <style scoped>
