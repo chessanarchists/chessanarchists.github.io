@@ -1,36 +1,49 @@
 <!-- In pages that just display text content like here, we use a 'ContentDoc' tag to grab the markdown text
-from the same-named .md file in the 'content' folder. We also import the stylesheet that applies styling to the text -->
+	from the same-named .md file in the 'content' folder. We also import the stylesheet that applies styling to the text -->
 <template>
 	<div class="mt-2">
-		<div class="ms-4 space-y-2">
-			<div class="flex flex-wrap">
-				<span>
-					<p>Count En Passants played</p>
-					<input type="text" placeholder="Enter chess.c*m username" v-model="user" class="rounded-lg py-2 bg-red-200 text-center" /> 
-					<!-- <span><button></button></span> -->
-					<span v-if="popup" class="absolute z-50 bg-accent text-white px-2 py-1 rounded-xl -translate-x-[185px] translate-y-12">enter your username</span>
-				</span>
-				<span>
-					<p>within the last ... months</p>
-					<div class="flex bg-red-500 rounded-full overflow-hidden">
-						<button 
-						class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 bg-clip-border bg-origin-border"
-						:class="{ 'bg-red-800': monthRange === option }"
-						@click="monthRange = option"
-						v-for="option in [2, 6, 12, 24]">
-						{{ option }}
-						</button>
+
+		<div class="ms-4 flex flex-wrap space-y-5 mb-5">
+
+
+			<div class="md:w-1/5">
+				<div class="flex flex-wrap space-y-5 mb-3">
+					<div class="mr-2 space-y-5">
+						<p class="text-2xl">Count En Passants played</p>
+						<p class="bg-red-300 p-4 rounded-3xl text-center">{{ count || status || "Result will appear here" }}</p>
+						<input type="text" placeholder="Enter chess.c*m username" v-model="user" class="rounded-lg py-2 bg-red-200 text-center" />
+						
+						<span v-if="popup" class="absolute z-50 bg-accent text-white px-2 py-1 rounded-xl -translate-x-[185px] translate-y-12">enter your username</span>
 					</div>
-				</span>
+					<span class="">
+						<p>within the last ... months</p>
+						<div class="flex bg-red-500 rounded-full overflow-hidden">
+							<button
+								class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 bg-clip-border bg-origin-border"
+								:class="{ 'bg-red-800': monthRange === option }"
+								@click="monthRange = option"
+								v-for="option in [2, 6, 12, 24]">
+								{{ option }}
+							</button>
+						</div>
+					</span>
+				</div>
+				<button @click="countPassants" id="trigger" class="bg-accent text-white rounded-lg px-2 py-1 text-center">Count</button>
 			</div>
-			<button @click="countPassants" id="trigger" class="bg-accent text-white rounded-lg px-2 py-1 text-center">Count</button>
-			<p class="bg-red-300 p-4 rounded-3xl text-center">Result: {{ count }}</p>
+			
+			<div class="space-y-5">
+				<p class="text-center text-lg">Other chess.c*m players' en passant scores:</p>
+				<div class="flex justify-center space-x-8">
+					<span class="bg-indigo-400 text-white p-1 rounded-xl" v-for="stats in ['GothamChess: 298', 'Magnus Carlsen: 59', 'Hikaru: 142']">
+						{{ stats }}
+					</span>
+				</div>
+			</div>
 		</div>
 
 		<main>
 			<ContentDoc />
 		</main>
-		
 	</div>
 </template>
 
@@ -48,19 +61,20 @@ from the same-named .md file in the 'content' folder. We also import the stylesh
 		],
 	});
 
-	const { countEnPassant } = useChessDotCm()
-	const popup = useState('popup', (() => false))
-	
-	const monthRange = ref(2)
-	const user = ref("")
-	const count = ref("")
+	const { countEnPassant } = useChessDotCm();
+	const status = useState("passant-count-status");
+	const popup = useState("popup", () => false);
+
+	const monthRange = ref(2);
+	const user = ref("");
+	const count = ref("");
 
 	function countPassants() {
-		if (!user.value) return popup.value = true
-		count.value = "Analyzing..."
-		countEnPassant(user.value, monthRange.value).then((passants) => 
-			count.value = `${passants} en passants played in the last ${monthRange.value} months`
-		)
+		count.value = "";
+		if (!user.value) return (popup.value = true);
+		countEnPassant(user.value.toLowerCase(), monthRange.value).then(
+			(passants) => (count.value = `Result: ${passants} en passants played in the last ${monthRange.value} months`)
+		);
 	}
 </script>
 

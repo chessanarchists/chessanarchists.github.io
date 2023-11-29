@@ -1,5 +1,8 @@
 export function useChessDotCm() {
+	const status = useState('passant-count-status', (() => ""))
+
 	async function countEnPassant(user, months) {
+		status.value = "Starting..."
 		let passantCount = 0;
 		for (let game of await fetchGames(user, months)) {
 			for (let [i, move] of game.pgn.entries()) {
@@ -19,12 +22,15 @@ export function useChessDotCm() {
 				}
 			}
 		}
+		status.value = ""
 		return passantCount;
 	}
 
 	async function fetchGames(user, months) {
 		let allGames = [];
 		await fetchArchives(user).then(async (archives) => {
+			status.value = "Fetching and counting games...."
+
 			for (let [i, archive] of archives.entries()) {
 				if (months && months == 1 + i) return;
 
@@ -45,6 +51,7 @@ export function useChessDotCm() {
 
 		const data = await response.json();
 
+		status.value = `Found ${data["archives"].lenght} archives`
 		return data["archives"];
 	}
 
@@ -91,5 +98,6 @@ export function useChessDotCm() {
 
 	return {
 		countEnPassant,
+		status
 	};
 }
