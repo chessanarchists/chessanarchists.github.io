@@ -7,7 +7,7 @@ export function useReddit() {
 		data = data.data.children.map((post) => post.data);
 		let posts = [];
 		for (let [i, post] of data.entries()) {
-			if (!(post.preview) || i >= 3) continue
+			if (!(post.preview) || post.over_18 || i >= 3) continue
 
 			let img_url = post.preview.images[0].resolutions.filter((obj) => obj.width < 1000).at(-1).url
 			const img_node = document.createTextNode(img_url);
