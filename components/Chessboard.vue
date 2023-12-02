@@ -151,6 +151,7 @@
 		status.value.message = "Holy Hell!";
 		status.value.correct = true;
 		status.value.finished = true;
+		if (Math.floor(Math.random() * 15) === 0) window.open("https://letmegooglethat.com/?q=en+passant", '_blank');
 		confetti.value = true;
 		setTimeout(() => {
 			confetti.value = false;
