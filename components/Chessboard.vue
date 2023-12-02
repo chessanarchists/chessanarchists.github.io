@@ -41,7 +41,7 @@
 		</div>
 		<div class="min-h-[3em]">
 			<button class="bg-accent text-white p-1 rounded-md shadow-xl hover:scale-110 hover:bg-blue-950 transition-all duration-100"
-				v-if="status.correct" @click="nextPuzzle">
+				v-if="status.finished" @click="nextPuzzle">
 				Try another one
 			</button>
 		</div>
@@ -60,6 +60,7 @@
 
 	let status = ref({
 		correct: false,
+		finished: false,
 		message: "",
 	});
 	let FEN = ref("");
@@ -149,6 +150,7 @@
 	function correctGuess() {
 		status.value.message = "Holy Hell!";
 		status.value.correct = true;
+		status.value.finished = true;
 		confetti.value = true;
 		setTimeout(() => {
 			confetti.value = false;
