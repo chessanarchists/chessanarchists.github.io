@@ -33,7 +33,7 @@
 			<div class="space-y-5">
 				<p class="text-center text-lg">Other chess.c*m players' en passant scores:</p>
 				<div class="flex justify-center space-x-8">
-					<span class="bg-indigo-400 text-white p-1 rounded-xl" v-for="stats in ['GothamChess: 298', 'Magnus Carlsen: 59', 'Hikaru: 142']">
+					<span class="bg-indigo-400 text-white p-1 rounded-xl" v-for="stats in ['GothamChess: 238', 'Magnus Carlsen: 68', 'Hikaru: 117']">
 						{{ stats }}
 					</span>
 				</div>
