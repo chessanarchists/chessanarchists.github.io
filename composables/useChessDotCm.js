@@ -6,13 +6,13 @@ export function useChessDotCm() {
 		let passantCount = 0;
 		for (let game of await fetchGames(user, months)) {
 			for (let [i, move] of game.pgn.entries()) {
-				const regex = new RegExp(`^\\d+\\.{${game.side == "white" ? 1 : 3}}\\s(?!.*x)[a-z45]+$`);
+				const regex = new RegExp(`^\\d+\\.{${game.side == "white" ? 3 : 1}}\\s(?!.*x)[a-z45]+$`);
 
 				if (move.match(regex)) {
 					let rank = move.at(-1);
 					let file = move.at(-2);
 
-					let landingRank = game.side == "white" ? Number(rank) - 1 : Number(rank) + 1;
+					let landingRank = game.side == "white" ? Number(rank) + 1 : Number(rank) - 1;
 					const nexRex = new RegExp(`^[^\\s]+ [a-z]*x${file}*${landingRank}$`);
 					const nextMove = game.pgn[i + 1];
 
