@@ -27,8 +27,7 @@ from the /composables/useReddit.js file. It provides us with the reddit posts an
 
 <script setup>
 	const { getPosts } = useReddit()
-	const posts = ref([])
-	getPosts().then((data) => posts.value = data)
+	const posts = useState('reddit-posts', (() => []))
 
 	function isImagePost(post) {
 		return post["media_metadata"];

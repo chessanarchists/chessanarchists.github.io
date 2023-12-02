@@ -21,6 +21,14 @@
 	</transition>
 </template>
 
+<script setup>
+	const { getPosts } = useReddit()
+	const posts = useState('reddit-posts', (() => []))
+	onMounted(() => {
+		if (!posts.value.length) getPosts().then((data) => posts.value = data)
+	})
+</script>
+
 <style scoped>
 	@import "~/assets/css/content.css";
 </style>

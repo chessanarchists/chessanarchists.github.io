@@ -1,5 +1,3 @@
-const redditPosts = ref([]);
-
 export function useReddit() {
 	async function getPosts() {
 		const response = await fetch("https://www.reddit.com/r/anarchychess/top.json?limit=10&t=day", {mode: 'cors'});
