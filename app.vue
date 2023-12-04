@@ -4,7 +4,7 @@ There is also the loading spinner, it's styling and the page font.
 The NuxtPage is where the actual page is inserted, depending on that url the user is on, from the pages directory -->
 
 <template>
-	<div class="select-none h-screen overflow-x-hidden bg-background mb-12 md:mb-0" @click="bodyClick">
+	<div id="app" class="select-none h-screen overflow-x-hidden bg-background mb-12 md:mb-0" @click="bodyClick">
 		<title>AnarchyChess</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		

@@ -9,7 +9,7 @@ from the /composables/useReddit.js file. It provides us with the reddit posts an
 				<client-only><faIcon :icon="['fab', 'reddit']" class="text-xl" /></client-only>
 			</a>
 		</div>
-		<div class="flex flex-wrap justify-center space-x-[2%] p-3 bg-primary rounded-2xl shadow-2xl">
+		<div class="flex flex-wrap justify-center space-x-[2%] p-3 bg-primary rounded-2xl shadow-xl">
 			<div
 				v-for="(post, index) in posts"
 				:key="index"
