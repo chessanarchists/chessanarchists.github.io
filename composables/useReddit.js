@@ -1,6 +1,6 @@
 export function useReddit() {
 	async function getPosts() {
-		const response = await fetch("https://www.reddit.com/r/anarchychess/top.json?limit=10&t=day", {mode: 'cors'});
+		const response = await fetch("https://www.reddit.com/r/anarchychess/top.json?limit=15&t=day", {mode: 'cors'});
 		let data = await response.json();
 		data = data.data.children.map((post) => post.data);
 		let posts = [];
