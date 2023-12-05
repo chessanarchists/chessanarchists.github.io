@@ -26,18 +26,5 @@ from the /composables/useReddit.js file. It provides us with the reddit posts an
 </template>
 
 <script setup>
-	const { getPosts } = useReddit()
 	const posts = useState('reddit-posts', (() => []))
-
-	function isImagePost(post) {
-		return post["media_metadata"];
-	}
-
-	function getImageUrl(post) {
-		console.log(post["media_metadata"])
-		let media_metadata = post["media_metadata"];
-		let images = media_metadata[Object.keys(media_metadata)[0]]["p"];
-		console.log(images)
-		return images.filter((obj) => obj["x"] < 1000).at(-1)["u"];
-	}
 </script>
