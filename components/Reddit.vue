@@ -17,7 +17,7 @@ from the /composables/useReddit.js file. It provides us with the reddit posts an
 			
 				<a :href="`https://reddit.com${post.url}`" draggable="false">
 					<p>{{ post.title }}</p>
-						<img :src="post.image" width="250" height="200" class="m-auto my-auto" draggable="false" loading="eager" />
+						<img :src="post.image" width="250" height="200" class="m-auto my-auto" draggable="false" loading="eager" :alt="post.title"/>
 					<p>{{ post.score }} fake internet points</p>
 				</a>
 			</div>

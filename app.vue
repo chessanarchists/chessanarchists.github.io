@@ -10,7 +10,7 @@ The NuxtPage is where the actual page is inserted, depending on that url the use
 		<div class="-top-4" id="top"></div>
 		<div id="loading" v-if="loading" class="fixed inset-0 flex items-center justify-center">
 			<div class="animate-spin">
-				<img src="~/assets/images/martin.png" width="200" draggable="false"/>
+				<img src="~/assets/images/martin.png" width="200" draggable="false" alt="loading spinner"/>
 			</div>
 		</div>
 		<MouseTrailer />
