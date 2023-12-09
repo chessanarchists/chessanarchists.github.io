@@ -5,7 +5,6 @@ The NuxtPage is where the actual page is inserted, depending on that url the use
 
 <template>
 	<div id="app" class="select-none h-screen overflow-x-hidden bg-background mb-12 md:mb-0" @click="bodyClick">
-		<title>AnarchyChess</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		
 		<div class="-top-4" id="top"></div>
