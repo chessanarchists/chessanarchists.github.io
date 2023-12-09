@@ -1,4 +1,4 @@
-# A small history of chess
+# A small history of chess - AnarchyChess
 
 <!-- The <br> tags make for a full new line, I think that looks cleaner and easier to read on the website -->
 

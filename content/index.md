@@ -1,4 +1,4 @@
-# Welcome to AnarchyChess
+# Welcome to AnarchyChess - a community for memesters and chess players
 
 ## Current and upcoming events:
 

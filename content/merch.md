@@ -15,10 +15,10 @@ Proceeds from the merch sales go to
 - 7.5% to marketing
 - 7.5% to upkeep
 
-  **Designs**
+**Designs**
 
-  #images
+#images
 
-  #prices
+#prices
 
   
