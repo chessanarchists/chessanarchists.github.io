@@ -13,7 +13,7 @@ to be displayed on every page -->
 					</nuxt-link>
 
 					<div class="flex space-x-5" v-for="(page, index) in pages" :key="index">
-						<nuxt-link :to="page.url" class="p-1 bg-[#ED1824] rounded-lg hover:bg-indigo-900 hover:scale-110 transition-all py-0.5 shadow-lg">
+						<nuxt-link :to="page.url" class="p-1 bg-[#ED1824] dark:bg-[#a00b0b] rounded-lg hover:bg-indigo-900 hover:scale-110 transition-all py-0.5 shadow-lg">
 							<p class="md:mb-1">{{ page.title }}</p>
 						</nuxt-link>
 					</div>

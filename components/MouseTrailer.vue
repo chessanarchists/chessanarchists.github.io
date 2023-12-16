@@ -83,6 +83,6 @@
 		transition: opacity 500ms ease;
 
 		border-radius: 30px;
-		background-image: "~/assets/images/horsey.png";
+		background-image: "~/assets/images/horsey.webp";
 	}
 </style>

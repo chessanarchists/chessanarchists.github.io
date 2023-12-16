@@ -12,7 +12,7 @@ export default {
         
 				"text-dark": "#fcd1d1",
 				"background-dark": "#251818",
-				"primary-dark": "#ff9e9e",
+				"primary-dark": "#890202",
 				"secondary-dark": "#5a0c0c",
 				"accent-dark": "#9f80ff",
 			},
