@@ -11,8 +11,8 @@ export default {
 				"accent": "#200082",
         
 				"text-dark": "#fcd1d1",
-				"background-dark": "#150201",
-				"primary-dark": "#ff1a1a",
+				"background-dark": "#251818",
+				"primary-dark": "#ff9e9e",
 				"secondary-dark": "#5a0c0c",
 				"accent-dark": "#9f80ff",
 			},

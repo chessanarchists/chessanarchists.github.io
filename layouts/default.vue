@@ -6,10 +6,10 @@ to be displayed on every page -->
 	<div class="flex flex-col min-h-screen" id="top">
 		<!-- This is the Navbar -->
 		<div class="flex-grow relative">
-			<nav class="bg-primary text-white w-full flex items-center space-x-[1em] py-2 md:rounded-b-3xl shadow-lg md:static fixed bottom-0 z-10">
+			<nav class="bg-primary dark:bg-primary-dark text-white dark:text-text-dark w-full flex items-center space-x-[1em] py-2 md:rounded-b-3xl shadow-lg md:static fixed bottom-0 z-10">
 				<div class="flex items-center space-x-[1em] flex-grow">
 					<nuxt-link to="/"
-						><img src="~/assets/images/horsey.png" width="50" height="50" class="ms-5 rounded hover:scale-110 transition-all pr-2" draggable="false" alt="horsey nav icon" />
+						><img src="~/assets/images/horsey.webp" width="50" height="50" class="ms-5 rounded hover:scale-110 transition-all pr-2" draggable="false" alt="horsey nav icon" />
 					</nuxt-link>
 
 					<div class="flex space-x-5" v-for="(page, index) in pages" :key="index">
@@ -32,7 +32,7 @@ to be displayed on every page -->
 		<!-- the footer -->
 		<footer class="bg-primary text-white p-2 text-center rounded-t-3xl">
 			Brought to you by the
-			<nuxt-link to="/about" class="text-accent underline">r/anarchychess team</nuxt-link>
+			<nuxt-link to="/about" class="text-accent dark:text-accent-dark underline">r/anarchychess team</nuxt-link>
 		</footer>
 	</div>
 </template>

@@ -24,7 +24,7 @@
 									v-if="piece"
 									:icon="icon(piece)"
 									:class="[
-										{ 'text-white': piece.slice(-1) == 'W' },
+										{ 'text-black': piece.slice(-1) == 'B','text-white': piece.slice(-1) == 'W' },
 										{ 'text-yellow-200 scale-110': activePiece && activePiece.row === rowI && activePiece.col === colI },
 									]"
 									class="text-4xl" />

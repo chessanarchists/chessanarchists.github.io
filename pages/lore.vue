@@ -5,12 +5,12 @@
 
 		<div class="ms-1 flex flex-wrap space-y-5 space-x-4 mb-5">
 
-			<div class="lg:w-1/4 bg-red-200 p-2 rounded-3xl">
+			<div class="lg:w-1/4 bg-red-200 dark:bg-primary p-2 rounded-3xl">
 				<div class="flex flex-col space-y-5 mb-3">
 					<div class="mr-2 space-y-5">
 						<p class="text-2xl">Count En Passants played</p>
-						<p class="bg-red-300 p-4 rounded-3xl text-center">{{ count || status || "Result will appear here" }}</p>
-						<input type="text" placeholder="Enter chess.c*m username" v-model="user" class="rounded-lg py-2 bg-red-300 text-center w-full" />
+						<p class="bg-red-300 dark:bg-[#ba3535] p-4 rounded-3xl text-center">{{ count || status || "Result will appear here" }}</p>
+						<input type="text" placeholder="Enter chess.c*m username" v-model="user" class="rounded-lg py-2 bg-red-300 dark:bg-[#ba3535] text-center w-full" />
 						
 						<span v-if="popup" class="absolute z-50 bg-accent text-white px-2 py-1 rounded-xl -translate-x-[185px] translate-y-12">enter your username</span>
 					</div>
