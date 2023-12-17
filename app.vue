@@ -4,20 +4,22 @@ There is also the loading spinner, it's styling and the page font.
 The NuxtPage is where the actual page is inserted, depending on that url the user is on, from the pages directory -->
 
 <template>
-	<div id="app" class="select-none h-screen overflow-x-hidden bg-background dark:bg-background-dark dark:text-text-dark mb-12 md:mb-0" @click="bodyClick">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		
-		<div class="-top-4" id="top"></div>
-		<div id="loading" v-if="loading" class="fixed inset-0 flex items-center justify-center">
-			<div class="animate-spin">
-				<img src="~/assets/images/martin.png" width="200" draggable="false" alt="loading spinner"/>
+	<div id="app" class="">
+		<div class="select-none h-screen overflow-x-hidden bg-background dark:bg-background-dark dark:text-text-dark mb-12 md:mb-0" @click="bodyClick">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+			<div class="-top-4" id="top"></div>
+			<div id="loading" v-if="loading" class="fixed inset-0 flex items-center justify-center">
+				<div class="animate-spin">
+					<img src="~/assets/images/martin.png" width="200" draggable="false" alt="loading spinner" />
+				</div>
 			</div>
+			<MouseTrailer />
+			<NuxtLayout>
+				<NuxtPage />
+			</NuxtLayout>
+			<Settings />
 		</div>
-		<MouseTrailer />
-		<NuxtLayout>
-			<NuxtPage />
-		</NuxtLayout>
-		<Settings />
 	</div>
 </template>
 
@@ -70,35 +72,47 @@ The NuxtPage is where the actual page is inserted, depending on that url the use
 
 	const loading = ref(false);
 	nuxtApp.hook("page:start", () => {
-		window.scrollTo(0, 0)
+		window.scrollTo(0, 0);
 		loading.value = true;
 		setTimeout(() => {
 			loading.value = false;
 		}, 700);
 	});
 
-	const popup = useState('popup', (() => false))
+	const popup = useState("popup", () => false);
 	const settingsIsOpen = useState("settings", () => false);
 
-	function bodyClick({target}) {
+	function bodyClick({ target }) {
 		// close hint popups
 		if (!(target.id == "trigger")) {
-			popup.value = false
+			popup.value = false;
 		}
 		// close settings on clicking away
-		const settings = document.getElementById('settings'),
-		settings_btn = document.getElementById('settings-btn')
-		if (
-			!(['settings', 'settings-btn'].includes(target.id) ||
-			settings.contains(target) || settings_btn.contains(target))
-			) {
-				settingsIsOpen.value = false
+		const settings = document.getElementById("settings"),
+			settings_btn = document.getElementById("settings-btn");
+		if (!(["settings", "settings-btn"].includes(target.id) || settings.contains(target) || settings_btn.contains(target))) {
+			settingsIsOpen.value = false;
 		}
 	}
+
+	let darkmode = useState("darkmode", () => null);
+	onBeforeMount(() => {
+		if (localStorage.getItem("darkmode")) {
+			if (JSON.parse(localStorage.getItem("darkmode"))) {
+				darkmode.value = "dark";
+				return document.getElementById("app").classList.add("dark");
+			}
+			darkmode.value = "light";
+		} else {
+			darkmode.value = "system";
+			if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+				return document.getElementById("app").classList.add("dark");
+			}
+		}
+	});
 </script>
 
 <style>
-	
 	.page-enter-active,
 	.page-leave-active {
 		transition: all 0.4s;

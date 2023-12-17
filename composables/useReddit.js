@@ -6,7 +6,6 @@ export function useReddit() {
 		let posts = [];
 		let count = 0;
 		for (let post of data) {
-			console.log(count)
 			if (!(post.preview) || post.over_18 || post.is_video || count >= 3) continue
 
 			let img_url = post.preview.images[0].resolutions.filter((obj) => obj.width < 1000).at(-1).url
