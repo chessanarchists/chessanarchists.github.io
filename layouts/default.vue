@@ -30,7 +30,7 @@ to be displayed on every page -->
 		</div>
 
 		<!-- the footer -->
-		<footer class="bg-primary text-white p-2 text-center rounded-t-3xl">
+		<footer class="bg-primary dark:bg-primary-dark text-white p-2 text-center rounded-t-3xl">
 			Brought to you by the
 			<nuxt-link to="/about" class="text-accent dark:text-accent-dark underline">r/anarchychess team</nuxt-link>
 		</footer>
