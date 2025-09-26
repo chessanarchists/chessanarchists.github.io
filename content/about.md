@@ -23,7 +23,7 @@ created the clicker-game
 
 <br>
 
-**u/Le-Scribe**
+**u/La-Scriba**
 
 subreddit historian.
 
